@@ -1,7 +1,7 @@
 .streamer-main {
   display: grid;
-  grid-template-columns: auto 1fr; /* El sidebar ocupa el ancho automáticamente y el iframe ocupa el resto */
-  height: 80vh; /* Altura de la página al 100% del viewport */
+  grid-template-columns: auto 1fr;
+  height: 75vh;
 }
 
 .stream p{
@@ -13,7 +13,7 @@
 iframe {
   width: 90%;
   height: 100%;
-  margin-top: 2%;
+  margin-top: 1%;
   margin-left: 2%;
 }
 .streamer{
