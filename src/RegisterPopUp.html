@@ -1,0 +1,218 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @font-face {
+      font-family: Libre Baskerville;
+      src: url("Fonts/LibreBaskerville-Bold.ttf");
+    }
+
+    body {
+      font-family: Libre Baskerville;
+      color: #42033D;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+
+    .popup-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 450px; /* Reducir la altura de 500px a 450px */
+      background-color: #FFDEF3;
+      border-radius: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+
+    .popup-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .popup-icon {
+      width: 100px;
+      height: 100px;
+    }
+
+    .popup-title {
+      text-align: left;
+      font-size: 24px;
+      margin-left: 10px;
+    }
+
+    .popup-form {
+      margin-top: 20px;
+    }
+
+    .popup-label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .popup-label:first-of-type {
+      margin-top: 20px;
+    }
+
+    .popup-input {
+      display: block;
+      width: 100%;
+      height: 30px;
+      border: 2px solid #42033D;
+      border-radius: 15px;
+      padding: 5px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    .popup-date {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .popup-date input {
+      width: 30%;
+    }
+
+    .popup-button {
+      display: block;
+      width: 100%;
+      height: 40px;
+      background-color: #854798;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 18px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      background-image: url("Images/close.png");
+      background-size: cover;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<button id="open-popup">Iniciar sesión</button>
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <div class="popup-header">
+      <img src="Images/BloosomICOSinFondo.png" class="popup-icon">
+      <div class="popup-title">Únete a Blossom</div>
+    </div>
+    <form class="popup-form" id="popup-form">
+      <label class="popup-label" for="username">Nombre de usuario</label>
+      <input class="popup-input" type="text" id="username" name="username" required>
+      <label class="popup-label" for="password">Contraseña</label>
+      <input class="popup-input" type="password" id="password" name="password" required>
+      <label class="popup-label" for="birthdate">Fecha de nacimiento</label>
+      <div class="popup-date">
+        <input class="popup-input" type="number" id="day" name="day" min="1" max="31" placeholder="Día" required>
+        <select class="popup-input" id="month" name="month" required>
+          <option value="" disabled selected>Mes</option>
+          <option value="1">Enero</option>
+          <option value="2">Febrero</option>
+          <option value="3">Marzo</option>
+          <option value="4">Abril</option>
+          <option value="5">Mayo</option>
+          <option value="6">Junio</option>
+          <option value="7">Julio</option>
+          <option value="8">Agosto</option>
+          <option value="9">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+        <input class="popup-input" type="number" id="year" name="year" min="1900" max="2024" placeholder="Año" required>
+      </div>
+      <label class="popup-label" for="email">Email</label>
+      <input class="popup-input" type="email" id="email" name="email" required>
+      <button class="popup-button" type="submit" id="register">Registrarse</button>
+    </form>
+    <div class="popup-close" id="close-popup"></div>
+  </div>
+</div>
+<script>
+  // Get the elements from the document
+  var openPopup = document.getElementById("open-popup");
+  var closePopup = document.getElementById("close-popup");
+  var popup = document.getElementById("popup");
+  var popupForm = document.getElementById("popup-form");
+
+  // Add event listeners to the buttons
+  openPopup.addEventListener("click", function() {
+    // Show the popup when the open button is clicked
+    popup.style.display = "block";
+  });
+
+  closePopup.addEventListener("click", function() {
+    // Hide the popup when the close button is clicked
+    popup.style.display = "none";
+  });
+
+  popupForm.addEventListener("submit", function(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+    // Get the form data
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var day = document.getElementById("day").value;
+    var month = document.getElementById("month").value;
+    var year = document.getElementById("year").value;
+    var email = document.getElementById("email").value;
+    // Validate the form data
+    if (username && password && day && month && year && email) {
+      // Send the form data to the server
+      // For example, using fetch API
+      fetch("https://example.com/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+          birthdate: year + "-" + month + "-" + day,
+          email: email
+        })
+      }).then(function(response) {
+        // Handle the response from the server
+        if (response.ok) {
+          // Registration successful
+          alert("Te has registrado con éxito");
+          // Hide the popup
+          popup.style.display = "none";
+        } else {
+          // Registration failed
+          alert("Ha ocurrido un error al registrarte");
+        }
+      }).catch(function(error) {
+        // Handle the error from the network
+        alert("Ha ocurrido un error de red");
+      });
+    } else {
+      // Form data is invalid
+      alert("Por favor, rellena todos los campos");
+    }
+  });
+</script>
+</body>
+</html>
