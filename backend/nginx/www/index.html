@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>TITULO</title>
+
+    <script src="js/hls.js"></script>
+    <script src="js/DPlayer.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="dplayer"></div>
+<script>
+    // Obtén el parámetro de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const hlsParam = urlParams.get('hls');
+
+    // Construye la ruta del video según el parámetro
+    const videoPath = `${hlsParam}/stream.m3u8`;
+    console.log(hlsParam);
+
+    // Configura el reproductor de video con la ruta construida
+    const dp = new DPlayer({
+        container: document.getElementById('dplayer'),
+        autoplay: true,
+        video: {
+            quality: [
+                {
+                    name: 'HQ',
+                    url: videoPath,
+                    //url: 'hls/stream.m3u8',
+                    type: 'hls',
+                }
+            ],
+            defaultQuality: 0,
+            pic: 'demo.png',
+            thumbnails: 'thumbnails.jpg',
+        },
+    });
+</script>
+
+</body>
+</html>
+
