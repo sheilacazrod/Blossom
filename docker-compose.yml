@@ -1,14 +1,13 @@
 version: '3.8'
 
 services:
-  nginx-rtmp:
+  nginx:
     labels:
       - "traefik.enable=true" # Enable Traefik to route traffic to this container
       - "traefik.http.routers.test.rule=Host(`6ojztw.stackhero-network.com`)" # Defined host
       - "traefik.http.routers.test.tls.certresolver=letsencrypt" # Use
-    build:
-      context: backend
-      dockerfile: backend/Dockerfile
+    image: angular_test
     ports:
       - "1935:1935"
-      - "80:80"
+      - "4200:80"
+

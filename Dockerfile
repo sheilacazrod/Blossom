@@ -1,5 +1,22 @@
-FROM ubuntu:focal
-# Tiagolo image
+#FROM node:18.13-alpine as build
+#
+#WORKDIR /app
+#
+#COPY ./frontend/package*.json .
+#
+#RUN npm install
+#
+#COPY ./frontend .
+#
+#RUN npm install
+#
+#ARG configuration=production
+#
+## Modificar el comando para que los archivos compilados se guarden en /app/output
+#RUN npm run build -- --output-path=/tmp --configuration=$configuration
+
+FROM ubuntu:focal as server
+# Tiangolo image
 
 LABEL Description = "Servidor Nginx con protocolo RTMP."
 
@@ -47,14 +64,20 @@ RUN cd /tmp/build/nginx/${NGINX_VERSION} && \
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
     ln -sf /dev/stderr /var/log/nginx/error.log
 
-# Copia archivos de config para ngix, las contraseñas \
-# y el index.html con el JS para el reproductor
-COPY ./nginx/conf/nginx.conf /etc/nginx/nginx.conf
-COPY ./nginx/conf/passwords.conf /etc/nginx/passwords.conf
-COPY ./nginx/www /usr/local/nginx/html/
+# Copia archivos de config para nginx, las contraseñas \
+# y el streaming.html con el JS para el reproductor
+COPY backend/nginx/conf/nginx.conf /etc/nginx/nginx.conf
+COPY backend/nginx/conf/passwords.conf /etc/nginx/passwords.conf
+COPY frontend/dist/blossom/browser /usr/local/nginx/html
+COPY backend/nginx/www /usr/local/nginx/html/
+
+#COPY --from=build /tmp /usr/local/nginx/html
+
 RUN mkdir /usr/local/nginx/html/hls
 
+# Copia la aplicación angular compilada en el servidor nginx
+
 EXPOSE 1935
-EXPOSE 80
+EXPOSE 4200
 
 CMD ["nginx", "-g", "daemon off;"]
