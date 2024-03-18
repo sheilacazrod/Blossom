@@ -1,9 +1,22 @@
 
 <main class="streamer-main">
   <article>
-    <app-side-bar></app-side-bar>
+    @if (extended){
+      <app-side-bar></app-side-bar>
+      <button (click)="extended = !extended" class="toggle-btn">
+        &#9778;
+      </button>
+    } @else {
+      <app-sidenav></app-sidenav>
+      <button (click)="extended = !extended" class="toggle-btn-compressed">
+        &#9778;
+      </button>
+    }
+
   </article>
+
   <article class="stream">
+
     <iframe id="player" src="https://pruebastreaming.ddns.net/?hls=hls1" scrolling="no" allowfullscreen></iframe>
     <section class="streamer">
       <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture">
