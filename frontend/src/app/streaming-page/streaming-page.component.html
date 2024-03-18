@@ -1,8 +1,20 @@
 
 <main class="streamer-main">
   <article>
-    <app-side-bar></app-side-bar>
+    @if (extended){
+      <app-side-bar></app-side-bar>
+      <button (click)="extended = !extended" class="toggle-btn">
+        &#9778;
+      </button>
+    } @else {
+      <app-sidenav></app-sidenav>
+      <button (click)="extended = !extended" class="toggle-btn-compressed">
+        &#9778;
+      </button>
+    }
+
   </article>
+
   <article class="stream">
     <iframe id="player" src="https://6ojztw.stackhero-network.com/streaming.html?hls=hls" scrolling="no" allowfullscreen type="video/mp4"></iframe>
     <!--
