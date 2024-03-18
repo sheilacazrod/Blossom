@@ -1,0 +1,21 @@
+
+<main class="streamer-main">
+  <article>
+    <app-side-bar></app-side-bar>
+  </article>
+  <article class="stream">
+    <iframe id="player" src="https://pruebastreaming.ddns.net/?hls=hls1" scrolling="no" allowfullscreen></iframe>
+    <section class="streamer">
+      <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture">
+      <div class="streamer-info">
+        <h1 class="username">Tobias</h1>
+        <p class="title">Título Stream</p>
+      </div>
+      <div class="buttons">
+        <button class="genericButton" (click)="changeSrc(1)">Stream 1</button>
+        <button class="genericButton" (click)="changeSrc(2)">Stream 2</button>
+      </div>
+    </section>
+  </article>
+</main>
+

@@ -17,6 +17,22 @@ import {SidenavComponent} from "../sidenav/sidenav.component";
   styleUrl: './streaming-page.component.css'
 })
 export class StreamingPageComponent {
+  src1: string = "https://pruebastreaming.ddns.net/?hls=hls1";
+  src2: string = "https://pruebastreaming.ddns.net/?hls=hls2";
+  changeSrc(a: number) {
   extended = false;
 
+    const playerIframe = document.getElementById('player') as HTMLIFrameElement;
+    if (a==1){
+      if (playerIframe) {
+        playerIframe.src = this.src1;
+      }
+    }
+    if (a==2){
+      if (playerIframe) {
+        playerIframe.src = this.src2;
+      }
+    }
+
+  }
 }

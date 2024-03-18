@@ -1,0 +1,79 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrarse</title>
+  <style>
+    body {
+      background-color: #F9F5E3;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .form {
+      width: 400px;
+      padding: 20px;
+      /* Quitar el borde del formulario */
+      border: none;
+    }
+    .form input {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      /* Añadir borde redondeado a los inputs */
+      border-radius: 10px;
+    }
+    .form button {
+      display: block;
+      /* Cambiar el color de fondo del botón */
+      background-color: #854798;
+      /* Añadir borde redondeado al botón */
+      border-radius: 10px;
+      /* Añadir tamaño de letra al botón */
+      font-size: 20px;
+      /* Añadir espacio entre el botón y el recuadro */
+      margin-bottom: 40px;
+      /* Añadir alineación al botón */
+      align-self: center;
+      /* Añadir margen automático al botón */
+      margin: 0 auto;
+    }
+    /* Añadir la fuente Lemon */
+    @font-face {
+      font-family: Lemon;
+      src: url("Fonts/Lemon-Regular.ttf");
+    }
+    /* Aplicar la fuente y el color a los elementos del formulario */
+    .form label, .form input, .form button {
+      font-family: Lemon;
+      color: #42033D;
+    }
+    /* Cambiar el color solo del botón de registrarse */
+    #register {
+      color: white;
+      /* Cambiar el tamaño solo del botón de registrarse */
+      width: 200px;
+      height: 80px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <img src="Images/BloosomICOSinFondo.png" alt="Imagen 1" width="495" height="652">
+  <div class="form">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+    <label for="username">Nombre de usuario</label>
+    <input type="text" id="username" name="username" required>
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" name="password" required>
+    <label for="confirm">Confirmar contraseña</label>
+    <input type="password" id="confirm" name="confirm" required>
+    <!-- Añadir id al botón -->
+    <button type="submit" id="register">Registrarse</button>
+  </div>
+  <img src="Images/BloosomICOSinFondo.png" alt="Imagen 2" width="495" height="652">
+</div>
+</body>
+</html>

@@ -1,6 +1,5 @@
 .streamer-main {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: flex;
   height: 75vh;
 }
 
@@ -34,10 +33,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 70%;
 }
 
 iframe {
-  width: 80%;
   aspect-ratio: 16/9; /* Establece la relación de aspecto del video */
   margin-top: 1%;
   margin-left: 2%;
@@ -78,5 +77,24 @@ iframe {
   margin-top: 1%;
 }
 
+.buttons{
+  margin-left: auto;
+}
 
+.genericButton{
+  padding: 5px ;
+  margin: 5px;
+  color: #d0a5c0;
+  background-color: white;
+  font-weight: bold;
+  border: 2px solid #d0a5c0; /* Grosor y color del borde */
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.genericButton:active {
+  transform: scale(0.9); /* Reduce el tamaño del botón al hacer clic */
+}
 

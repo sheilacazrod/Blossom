@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @font-face {
+      font-family: Libre Baskerville;
+      src: url("Fonts/LibreBaskerville-Bold.ttf");
+    }
+
+    body {
+      font-family: Libre Baskerville;
+      color: #42033D;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+
+    .popup-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 330px; /* Ajustado para el formulario de inicio de sesión */
+      background-color: #FFDEF3;
+      border-radius: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .popup-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .popup-icon {
+      width: 100px;
+      height: 100px;
+    }
+
+    .popup-title {
+      text-align: left;
+      font-size: 24px;
+      margin-left: 10px;
+    }
+
+    .popup-form {
+      margin-top: 20px;
+    }
+
+    .popup-label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .popup-input {
+      display: block;
+      width: 100%;
+      height: 30px;
+      border: 2px solid #42033D;
+      border-radius: 15px;
+      padding: 5px;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    .popup-button {
+      display: block;
+      width: 100%;
+      height: 40px;
+      background-color: #854798;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 18px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      background-image: url("Images/close.png");
+      background-size: cover;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<button id="open-popup">Iniciar sesión</button>
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <div class="popup-header">
+      <img src="Images/BloosomICOSinFondo.png" class="popup-icon">
+      <div class="popup-title">Inicia sesión en Blossom</div>
+    </div>
+    <form class="popup-form" id="popup-form">
+      <label class="popup-label" for="username">Nombre de usuario</label>
+      <input class="popup-input" type="text" id="username" name="username" required>
+      <label class="popup-label" for="password">Contraseña</label>
+      <input class="popup-input" type="password" id="password" name="password" required>
+      <button class="popup-button" type="submit" id="login">Iniciar sesión</button>
+    </form>
+    <div class="popup-close" id="close-popup"></div>
+  </div>
+</div>
+
+<script>
+  // Get the elements from the document
+  var openPopup = document.getElementById("open-popup");
+  var closePopup = document.getElementById("close-popup");
+  var popup = document.getElementById("popup");
+  var popupForm = document.getElementById("popup-form");
+
+  // Add event listeners to the buttons
+  openPopup.addEventListener("click", function() {
+    // Show the popup when the open button is clicked
+    popup.style.display = "block";
+  });
+
+  closePopup.addEventListener("click", function() {
+    // Hide the popup when the close button is clicked
+    popup.style.display = "none";
+  });
+
+  popupForm.addEventListener("submit", function(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+    // Get the form data
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    // Validate the form data
+    if (username && password) {
+  // Send the form data to the server
+  // For example, using fetch API
+      fetch("https://example.com/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password
+        })
+      }).then(function(response) {
+        // Handle the response from the server
+        if (response.ok) {
+          // Login successful
+          alert("Has iniciado sesión con éxito");
+          // Hide the popup
+          popup.style.display = "none";
+        } else {
+          // Login failed
+          alert("Nombre de usuario o contraseña incorrectos");
+        }
+      }).catch(function(error) {
+        // Handle the error from the network
+        alert("Ha ocurrido un error de red al intentar iniciar sesión");
+      });
+    } else {
+      // Form data is invalid
+      alert("Por favor, rellena todos los campos requeridos");
+    }
+  });
+</script>
+</body>
+</html>
+
