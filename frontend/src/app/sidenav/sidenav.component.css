@@ -1,7 +1,6 @@
 .sidenav{
   height: 100%;
   padding: 10px;
-
 }
 .follow-icon{
   height: 30px;
@@ -39,4 +38,6 @@
   padding: 0;
 }
 
-
+ul {
+  list-style: none;
+}
