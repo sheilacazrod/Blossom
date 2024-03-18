@@ -17,10 +17,10 @@ import {SidenavComponent} from "../sidenav/sidenav.component";
   styleUrl: './streaming-page.component.css'
 })
 export class StreamingPageComponent {
-  src1: string = "https://pruebastreaming.ddns.net/?hls=hls1";
-  src2: string = "https://pruebastreaming.ddns.net/?hls=hls2";
-  changeSrc(a: number) {
   extended = false;
+  src1: string = "https://6ojztw.stackhero-network.com/streaming.html?hls=hls";
+  src2: string = "https://6ojztw.stackhero-network.com/streaming.html?hls=hls1";
+  changeSrc(a: number) {
 
     const playerIframe = document.getElementById('player') as HTMLIFrameElement;
     if (a==1){

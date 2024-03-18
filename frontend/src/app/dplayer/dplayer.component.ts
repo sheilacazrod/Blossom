@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import DPlayer from "dplayer";
-import Hls from 'hls.js';
+// @ts-ignore
+import Hls from './hls.js';
 
 @Component({
   selector: 'app-dplayer',
