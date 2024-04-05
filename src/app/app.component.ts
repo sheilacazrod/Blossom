@@ -8,7 +8,7 @@ import {NavbarComponent} from "./navbar/navbar.component";
   standalone: true,
   imports: [RouterOutlet, StreamingPageComponent, NavbarComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'Blossom';

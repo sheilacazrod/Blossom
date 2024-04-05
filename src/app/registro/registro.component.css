@@ -1,0 +1,106 @@
+@font-face {
+  font-family: 'LibreBaskerville';
+  src: url('../../Fonts/LibreBaskerville-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+body {
+  font-family: Libre Baskerville;
+  color: #42033D;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 450px;
+  background-color: #FFDEF3;
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+}
+
+.popup-icon {
+  width: 100px;
+  height: 100px;
+}
+
+.popup-title {
+  text-align: left;
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.popup-form {
+  margin-top: 20px;
+}
+
+.popup-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.popup-label:first-of-type {
+  margin-top: 20px;
+}
+
+.popup-input {
+  display: block;
+  width: 100%;
+  height: 30px;
+  border: 2px solid #42033D;
+  border-radius: 15px;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.popup-date {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup-date input {
+  width: 30%;
+}
+
+.popup-button {
+  display: block;
+  width: 100%;
+  height: 40px;
+  background-color: #854798;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background-image: url("../../Images/close.png");
+  background-size: cover;
+  cursor: pointer;
+}

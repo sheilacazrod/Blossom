@@ -8,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-
+  openPopup(type: string): void {
+    alert('HOLA');
+  }
+  openRegisterPopup() {
+    const popup = document.getElementById('popup-registro');
+    if (popup) {
+      popup.style.display = 'block';
+    }
+  }
 }
