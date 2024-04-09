@@ -22,7 +22,9 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/Images",
+              "src/Fonts"
             ],
             "styles": [
               "node_modules/@videogular/ngx-videogular/fonts/videogular.css",
@@ -83,7 +85,9 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/Images",
+              "src/Fonts"
             ],
             "styles": [
               "@angular/material/prebuilt-themes/purple-green.css",
@@ -94,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "1a8ca494-aa32-483d-8e91-911e12d5cf1b"
   }
 }
