@@ -6,6 +6,7 @@ import {VgCoreModule} from '@videogular/ngx-videogular/core';
 import {VgControlsModule} from '@videogular/ngx-videogular/controls';
 import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
 import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
+import {HomeComponent} from "./home/home.component";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
-    VgBufferingModule,
+    VgBufferingModule, HomeComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
