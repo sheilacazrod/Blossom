@@ -1,6 +1,6 @@
 <div class="navbar">
   <div class="left">
-    <img src="../../assets/Logo.svg" class="logo" alt="Logo"/>
+    <img src="../../assets/Logo.svg" class="logo" alt="Logo" (click)="navigateToStreaming()">
     <p class="Siguiendo">Siguiendo</p>
     <p class="Categorias">Categorías</p>
   </div>
@@ -13,7 +13,6 @@
   <div class="profile">
     <app-register-button (onRegister)="openPopup('register')"></app-register-button>
     <app-login-button (onLogin)="openPopup('login')"></app-login-button>
-    <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture">
-  </div>
+    <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture" (click)="navigateToProfile()">
 
 </div>

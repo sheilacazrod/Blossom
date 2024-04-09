@@ -1,0 +1,23 @@
+.configuracion {
+  /* Estilos generales para la sección de configuración */
+}
+
+.nav {
+  list-style: none;
+}
+
+.nav li {
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.nav li.activo {
+  color: purple; /* o el color que prefieras para el elemento activo */
+}
+
+.imagen-perfil, .ajustes-perfil {
+  margin-top: 20px;
+}
+
+/* Añade más estilos según necesites */
