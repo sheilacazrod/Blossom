@@ -1,0 +1,34 @@
+.carousel-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3%;
+}
+
+.carousel-content{
+  width: 30%;
+  aspect-ratio: 16/9;
+}
+
+.carousel-container i {
+  font-size: 4em;
+  color: #d0a5c0;
+  cursor: pointer;
+}
+
+.additional-videos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2%;
+}
+
+.video {
+  width: calc(25% - 5%);
+  margin: 10px;
+}
+
+.video img {
+  width: 100%;
+}
+
