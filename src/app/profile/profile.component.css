@@ -1,23 +1,86 @@
 .configuracion {
-  /* Estilos generales para la sección de configuración */
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: auto;
 }
 
 .nav {
   list-style: none;
+  padding: 20px 0;
+  margin: 0;
+  text-align: center;
 }
 
 .nav li {
-  display: inline-block;
+  display: inline;
   margin-right: 10px;
   cursor: pointer;
+  color: black; /* Color por defecto para los elementos no seleccionados */
+  padding: 10px;
 }
 
 .nav li.activo {
-  color: purple; /* o el color que prefieras para el elemento activo */
+  color: #42033D; /* Color para el elemento activo */
 }
 
 .imagen-perfil, .ajustes-perfil {
-  margin-top: 20px;
+  background-color: #f0e1d2; /* Color de fondo para las secciones */
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 5px;
 }
 
-/* Añade más estilos según necesites */
+button {
+  background-color: #F9B4ED; /* Color de fondo para los botones */
+  color: #000000; /* Color de texto para los botones */
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilos para los campos de texto y área de texto */
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.imagen-perfil {
+  display: flex;
+  flex-direction: column; /* Cambia la dirección a columna */
+  align-items: flex-start; /* Alinea los elementos al inicio */
+  background-color: #f0e1d2;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.imagen-perfil h2 {
+  margin-bottom: 10px; /* Espacio debajo del título */
+}
+
+.imagen-perfil > div {
+  display: flex;
+  flex-direction: row; /* Organiza los elementos en fila */
+  align-items: center; /* Alinea los elementos verticalmente */
+}
+
+.imagen-perfil img {
+  max-width: 150px;
+  margin-right: 20px; /* Espacio entre imagen y texto */
+}
+
+.imagen-perfil button {
+  padding: 10px;
+  margin-top: 0; /* Elimina el margen superior del botón */
+}
+
+

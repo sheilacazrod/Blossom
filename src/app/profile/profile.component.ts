@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
-import {NgClass} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [
-    NgClass,
-    FormsModule
-  ],
+  imports: [CommonModule, FormsModule], // Asegúrate de importar CommonModule y FormsModule aquí
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrls: ['./profile.component.css']
 })
+
 export class ProfileComponent {
   tabSeleccionado: string = 'perfil';
   urlImagenPerfil: string = 'ruta-a-tu-imagen.jpg';

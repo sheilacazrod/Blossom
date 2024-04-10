@@ -8,11 +8,15 @@
     <div class="imagen-perfil">
       <h2>Imagen de perfil</h2>
       <div>
-        <img src="{{urlImagenPerfil}}" alt="Imagen de perfil">
-        <button (click)="actualizarImagen()">Actualizar imagen de perfil</button>
+        <img src="../../assets/Profile.png" alt="Imagen de perfil">
+        <div>
+          <button (click)="actualizarImagen()">Actualizar imagen de perfil</button>
+          <p>El formato debe ser JPEG o PNG y no puede superar los 10 MB.</p>
+        </div>
       </div>
-      <p>El formato debe ser JPEG o PNG y no puede superar los 10 MB.</p>
     </div>
+
+
 
     <div class="ajustes-perfil">
       <h2>Ajustes del perfil</h2>
