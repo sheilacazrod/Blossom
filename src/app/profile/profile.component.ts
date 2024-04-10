@@ -15,6 +15,9 @@ export class ProfileComponent {
   urlImagenPerfil: string = 'ruta-a-tu-imagen.jpg';
   nombrePerfil: string = '';
   biografia: string = '';
+  serverLink: string = 'https://server.com/link'; // Link del servidor
+  isEditing: boolean = false; // Controla si el link del servidor es editable
+  isVisible: boolean = false; // Controla la visibilidad de la clave de transmisión
 
   seleccionar(tab: string) {
     this.tabSeleccionado = tab;
@@ -26,5 +29,13 @@ export class ProfileComponent {
 
   guardarCambios() {
     // Lógica para guardar los cambios del perfil
+  }
+
+  toggleEdit() {
+    this.isEditing = !this.isEditing;
+  }
+
+  toggleVisibility() {
+    this.isVisible = !this.isVisible;
   }
 }

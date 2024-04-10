@@ -16,8 +16,6 @@
       </div>
     </div>
 
-
-
     <div class="ajustes-perfil">
       <h2>Ajustes del perfil</h2>
       <label for="nombrePerfil">Nombre de perfil:</label>
@@ -30,4 +28,22 @@
     </div>
   </div>
 
+  <div *ngIf="tabSeleccionado === 'transmitir'">
+    <div class="clave-transmision">
+      <h2>Clave de transmisión</h2>
+      <div>
+        <label for="serverLink">Link del servidor:</label>
+        <input type="text" id="serverLink" [(ngModel)]="serverLink" [readonly]="!isEditing">
+        <button (click)="toggleEdit()"><i class="fa fa-pencil"></i></button>
+      </div>
+
+      <div>
+        <label for="transmissionKey">Clave:</label>
+        <input [type]="isVisible ? 'text' : 'password'" id="transmissionKey" value='examplekey'>
+        <button (click)="toggleVisibility()"><i [ngClass]="{'fa fa-eye': !isVisible, 'fa fa-eye-slash': isVisible}"></i></button>
+      </div>
+
+      <p>No compartas la clave con nadie</p>
+    </div>
+  </div>
 </div>
