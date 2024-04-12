@@ -84,3 +84,20 @@ textarea {
 }
 
 
+/* Establece un ancho fijo para los inputs y añade espacio para los iconos */
+input[type="text"], input[type="password"] {
+  width: calc(100% - 70px); /* Ajusta el valor de 70px según el tamaño de tus iconos */
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Asegúrate de que los botones estén alineados con los inputs */
+button {
+  padding: 10px;
+  margin-top: 0; /* Alinea el botón con el input */
+  border-radius: 5px;
+  cursor: pointer;
+  height: 36px; /* Ajusta la altura para alinear con el input */
+}
