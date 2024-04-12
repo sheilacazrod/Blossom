@@ -37,8 +37,5 @@ export class ProfileComponent {
 
   toggleVisibility() {
     this.isVisible = !this.isVisible;
-    let inputElement = document.getElementById('transmissionKey') as HTMLInputElement;
-    inputElement.type = this.isVisible ? 'text' : 'password';
   }
-
 }

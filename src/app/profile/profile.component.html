@@ -40,7 +40,7 @@
       <div>
         <label for="transmissionKey">Clave:</label>
         <input [type]="isVisible ? 'text' : 'password'" id="transmissionKey" value='examplekey'>
-        <button (click)="toggleVisibility()"><i class="fa fa-eye"></i></button>
+        <button (click)="toggleVisibility()"><i [ngClass]="{'fa fa-eye': !isVisible, 'fa fa-eye-slash': isVisible}"></i></button>
       </div>
 
       <p>No compartas la clave con nadie</p>
