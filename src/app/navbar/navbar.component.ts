@@ -25,4 +25,7 @@ export class NavbarComponent {
   navigateToStreaming() {
     this.router.navigate(['/streaming']);
   }
+  navigateToFollowing() {
+    this.router.navigate(['/following']);
+  }
 }

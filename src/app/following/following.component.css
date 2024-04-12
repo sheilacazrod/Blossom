@@ -1,0 +1,30 @@
+.siguiendo-container h1 {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.seccion-directos, .seccion-recomendados {
+  margin-left: 60px; /* Alinea los subtítulos a la derecha */
+}
+
+.seccion-directos h2, .seccion-recomendados h2 {
+  padding-bottom: 5px;
+  border-bottom: 1px solid black; /* Crea el subrayado */
+  display: inline-block; /* Asegura que el subrayado solo cubra el texto */
+}
+
+.directos-container, .recomendados-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.directos-container img, .recomendados-container img {
+  width: 23%; /* Ajusta el ancho para que quepan 4 imágenes en línea */
+}
+
+
+.directos-container img, .recomendados-container img {
+  /* Estilos para las imágenes */
+  width: 23%; /* Ajusta el ancho para que quepan 4 imágenes en línea */
+}

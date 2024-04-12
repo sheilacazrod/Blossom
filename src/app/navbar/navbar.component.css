@@ -83,3 +83,12 @@ input {
 .button:hover {
   background-color: #d0a5c0;
 }
+.left div, .left p {
+  margin-bottom: auto;
+  margin-top: auto;
+  margin-right: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  font-family: "Libre Baskerville";
+  cursor: pointer; /* Agrega cursor pointer para indicar que es clickable */
+}
