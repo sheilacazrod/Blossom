@@ -8,7 +8,7 @@
     <div class="imagen-perfil">
       <h2>Imagen de perfil</h2>
       <div>
-        <img src="../../assets/Profile.png" alt="Imagen de perfil">
+        <img [src]="urlImagenPerfil" alt="Imagen de perfil">
         <div>
           <button (click)="actualizarImagen()">Actualizar imagen de perfil</button>
           <p>El formato debe ser JPEG o PNG y no puede superar los 10 MB.</p>
@@ -19,7 +19,8 @@
     <div class="ajustes-perfil">
       <h2>Ajustes del perfil</h2>
       <label for="nombrePerfil">Nombre de perfil:</label>
-      <input type="text" id="nombrePerfil" [(ngModel)]="nombrePerfil">
+      <input type="text" id="nombrePerfil" [(ngModel)]="nombrePerfil"[readonly]="!isEditingNombre">
+      <button (click)="toggleEditNombre()"><i class="fa fa-pencil"></i></button>
 
       <label for="biografia">Biografía:</label>
       <textarea id="biografia" [(ngModel)]="biografia"></textarea>
