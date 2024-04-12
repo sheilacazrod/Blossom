@@ -1,0 +1,21 @@
+<main>
+  @if (extended){
+    <app-side-bar></app-side-bar>
+    <button (click)="extended = !extended" class="toggle-btn">
+      &#9778;
+    </button>
+  } @else {
+    <app-sidenav></app-sidenav>
+    <button (click)="extended = !extended" class="toggle-btn-compressed">
+      &#9778;
+    </button>
+  }
+  <ul id="categories">
+    <li class="category">VIDEOGAMES <img class="category__img" src="./assets/gamepad-solid.svg"></li>
+    <li class="category">ESPORTS <img class="category__img" src="./assets/medal-solid.svg"></li>
+    <li class="category">JUST CHATTING <img class="category__img" src="./assets/microphone-solid.svg"></li>
+    <li class="category">IRL <img class="category__img" src="./assets/video-solid.svg"></li>
+    <li class="category">CREATIVE <img class="category__img" src="./assets/paintbrush-solid.svg"></li>
+    <li class="category">MUSIC <img class="category__img" src="./assets/music-solid.svg"></li>
+  </ul>
+</main>

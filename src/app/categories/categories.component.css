@@ -1,0 +1,39 @@
+#categories {
+  list-style-type: none;
+  margin-left: 10%;
+  margin-right: 50%;
+}
+
+.category__img {
+  height: 40px;
+}
+.category {
+  font-size: 40px;
+  margin-bottom: 2%;
+  border: solid #D0A5C0;
+  background-color: #d0a5c0;
+  border-radius: 10px;
+  line-height: 1.5;
+  cursor: pointer;
+
+}
+
+.toggle-btn {
+  position: absolute;
+  left: 210px;
+  bottom: 795px;
+  cursor: pointer;
+  border: transparent;
+  background-color: #F9F5E3;
+  z-index: 1000;
+}
+
+.toggle-btn-compressed {
+  position: absolute;
+  left: 22px;
+  bottom: 795px;
+  cursor: pointer;
+  border: transparent;
+  background-color: #F9F5E3;
+  z-index: 1000;
+}

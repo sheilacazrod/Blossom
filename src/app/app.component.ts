@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {StreamingPageComponent} from "./streaming-page/streaming-page.component";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from '@angular/material/list';
+import {CategoriesComponent} from "./categories/categories.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, StreamingPageComponent, NavbarComponent],
+  imports: [RouterOutlet, NavbarComponent, CategoriesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
