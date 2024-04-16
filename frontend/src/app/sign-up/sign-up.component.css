@@ -1,0 +1,77 @@
+
+body {
+  color: #42033D;
+}
+
+.popup-content {
+  width: 400px;
+  height: 450px; /* Ajustado para el formulario de inicio de sesión */
+  background-color: #FFDEF3;
+  border-radius: 10px;
+  border: 2px solid #42033D;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+.popup-header {
+  display: flex;
+  align-items: center;
+}
+
+.popup-icon {
+  width: 100px;
+  height: 100px;
+}
+
+.popup-title {
+  text-align: left;
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.popup-form {
+  margin-top: 20px;
+}
+
+.popup-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.popup-label:first-of-type {
+  margin-top: 20px;
+}
+
+.popup-input {
+  display: block;
+  width: 100%;
+  height: 30px;
+  border: 2px solid #42033D;
+  border-radius: 15px;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.popup-date {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup-date input {
+  width: 30%;
+}
+
+.popup-button {
+  display: block;
+  width: 100%;
+  height: 40px;
+  background-color: #854798;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+  margin-top: 10px;
+  cursor: pointer;
+}
