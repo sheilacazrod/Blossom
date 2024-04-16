@@ -7,6 +7,7 @@ import {VgControlsModule} from '@videogular/ngx-videogular/controls';
 import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
 import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 import { MatDialogModule } from "@angular/material/dialog";
+import {HomeComponent} from "./home/home.component";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ import { MatDialogModule } from "@angular/material/dialog";
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
-    MatDialogModule
+    MatDialogModule,
+    VgBufferingModule, HomeComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
