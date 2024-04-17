@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import {RegisterButtonComponent} from "../register-button/register-button.component";
 import {LoginButtonComponent} from "../login-button/login-button.component";
 import { Router } from '@angular/router';
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [
     RegisterButtonComponent,
-    LoginButtonComponent
+    LoginButtonComponent,
+    CommonModule
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
@@ -22,10 +24,28 @@ export class NavbarComponent {
   navigateToProfile() {
     this.router.navigate(['/profile']);
   }
+
   navigateToStreaming() {
     this.router.navigate(['/streaming']);
   }
+
   navigateToFollowing() {
     this.router.navigate(['/following']);
   }
+
+  showDropdown = false;
+
+  toggleDropdown(): void {
+    this.showDropdown = !this.showDropdown;
+  }
+
+  navigateToChannel() {
+    // Implementa la lógica de navegación
+  }
+
+  navigateToSettings() {
+    // Implementa la lógica de navegación
+  }
+
 }
+

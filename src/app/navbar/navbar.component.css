@@ -92,3 +92,72 @@ input {
   font-family: "Libre Baskerville";
   cursor: pointer; /* Agrega cursor pointer para indicar que es clickable */
 }
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+
+  display: none; /* Se mantiene oculto por defecto */
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 100%; /* Posiciona el menú justo debajo de la imagen de perfil */
+  border-radius: 4px;
+  padding: 5px 0;
+  border: 1px solid #ddd; /* Agrega un borde sutil */
+  background-color: #E4BAD4; /* Fondo blanco para el menú */
+  transition: all 0.3s ease; /* Transición suave al abrir/cerrar */
+}
+
+.dropdown-content a {
+  font-family: 'Jaldi', sans-serif;
+  padding: 10px 15px;
+  display: block;
+  color: #333333; /* Color del texto */
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+.dropdown-content a:hover {
+  background-color: #f2f2f2; /* Color de fondo al pasar el cursor */
+}
+
+.show-dropdown {
+  display: block; /* Se muestra cuando se agrega esta clase */
+}
+
+.icon-spacing {
+  margin-right: 5px;
+}
+/* Estilo para la sección del perfil en el menú desplegable */
+.profile-section {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: #333333; /* Ajusta este color al que estés usando para tus enlaces */
+}
+
+/* Estilo para la imagen de perfil en el menú desplegable */
+.dropdown-profile-picture {
+  width: 30px; /* Ajusta el tamaño según necesites */
+  height: 30px; /* Ajusta el tamaño según necesites */
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Estilo para el nombre de perfil en el menú desplegable */
+.profile-name {
+  font-family: 'Jaldi', sans-serif !important;
+  color: #333333 !important;
+
+}
+/* Estilo para la línea separadora */
+.dropdown-divider {
+  border: 0;
+  height: 0.5px;
+  background-color: #333333; /* Elige el color que prefieras para la línea */
+  margin: 10px 0; /* Ajusta el espacio vertical antes y después de la línea */
+}

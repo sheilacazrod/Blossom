@@ -1,3 +1,9 @@
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Jaldi:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+
 <div class="navbar">
   <div class="left">
     <img src="../../assets/Logo.svg" class="logo" alt="Logo" (click)="navigateToStreaming()">
@@ -12,6 +18,19 @@
   <div class="profile">
     <app-register-button (onRegister)="openPopup('register')"></app-register-button>
     <app-login-button (onLogin)="openPopup('login')"></app-login-button>
-    <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture" (click)="navigateToProfile()">
-
+    <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture" (click)="toggleDropdown()">
+    <div class="dropdown-content" [class.show-dropdown]="showDropdown">
+      <div class="profile-section">
+        <img src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture" class="dropdown-profile-picture">
+        <p class="profile-name">Nombre de perfil</p>
+      </div>
+      <hr class="dropdown-divider">
+      <a href="#"><i class="fa-solid fa-house icon-spacing"></i>Canal</a>
+      <a href="/profile" ><i class="fa fa-cog icon-spacing"></i>Configuración</a>
+      <a href="#" ><i class="fa-solid fa-microphone-lines icon-spacing"></i>Stremear</a>
+      <a href="/following" ><i class="fa-solid fa-star icon-spacing"></i>Suscriptores</a>
+      <a href="#" ><i class="fa-solid fa-door-closed icon-spacing"></i>Cerrar Sesión</a>
+    </div>
+  </div>
 </div>
+
