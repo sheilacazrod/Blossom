@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StreamingPageComponent } from './streaming-page.component';
+import { CategoriesComponent } from './categories.component';
 
-describe('StreamingPageComponent', () => {
-  let component: StreamingPageComponent;
-  let fixture: ComponentFixture<StreamingPageComponent>;
+describe('CategoriesComponent', () => {
+  let component: CategoriesComponent;
+  let fixture: ComponentFixture<CategoriesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StreamingPageComponent]
+      imports: [CategoriesComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(StreamingPageComponent);
+    fixture = TestBed.createComponent(CategoriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

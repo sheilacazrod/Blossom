@@ -1,0 +1,48 @@
+<main>
+    <article id="sideif">
+        @if (extended){
+            <button (click)="extended = !extended" class="toggle-btn">
+                &#9778;
+            </button>
+            <app-side-bar id="sidebar"></app-side-bar>
+        } @else {
+            <button (click)="extended = !extended" class="toggle-btn-compressed">
+                &#9778;
+            </button>
+            <app-sidenav id="sidenav"></app-sidenav>
+        }
+    </article>
+    <article class="categories">
+
+        <ul id="category_list">
+            <li class="category_header"><p>Categories</p></li>
+            <li class="category">VIDEOGAMES <img class="category__img" src="./assets/gamepad-solid.svg"></li>
+            <li class="category">ESPORTS <img class="category__img" src="./assets/medal-solid.svg"></li>
+            <li class="category">JUST CHATTING <img class="category__img" src="./assets/microphone-solid.svg"></li>
+            <li class="category">IRL <img class="category__img" src="./assets/video-solid.svg"></li>
+            <li class="category">CREATIVE <img class="category__img" src="./assets/paintbrush-solid.svg"></li>
+            <li class="category">MUSIC <img class="category__img" src="./assets/music-solid.svg"></li>
+        </ul>
+    </article>
+
+    <article class="streams_1">
+        <img  width="200px" height="250px" style="background: #d0a5c0" class="stream">
+        <img  width="200px" height="250px" style="background: #d0a5c0" class="stream">
+        <img  width="200px" height="250px" style="background: #d0a5c0" class="stream">
+    </article>
+    <article class="streams_2">
+        <img  width="200px" height="250px" style="background: #d0a5c0" class="stream">
+        <img  width="200px" height="250px" style="background: #d0a5c0" class="stream">
+        <img  width="200px" height="250px" style="background: #d0a5c0" class="stream">
+    </article>
+    <article class="streams_3">
+        <img  width="200px" height="250px" style="background: #d0a5c0" class="stream">
+        <img  width="200px" height="250px" style="background: #d0a5c0" class="stream">
+        <img  width="200px" height="250px" style="background: #d0a5c0" class="stream">
+    </article>
+    <article class="streams_4">
+        <img  width="200px" height="250px" style="background: #d0a5c0" class="stream">
+        <img  width="200px" height="250px" style="background: #d0a5c0" class="stream">
+        <img  width="200px" height="250px" style="background: #d0a5c0" class="stream">
+    </article>
+</main>
