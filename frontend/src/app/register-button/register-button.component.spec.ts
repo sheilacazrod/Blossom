@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavbarComponent } from './navbar.component';
+import { RegisterButtonComponent } from './register-button.component';
 
-describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+describe('RegisterButtonComponent', () => {
+  let component: RegisterButtonComponent;
+  let fixture: ComponentFixture<RegisterButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NavbarComponent]
+      imports: [RegisterButtonComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(NavbarComponent);
+    
+    fixture = TestBed.createComponent(RegisterButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -20,5 +20,4 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

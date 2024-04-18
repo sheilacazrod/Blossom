@@ -1,0 +1,50 @@
+<div class="configuracion">
+  <ul class="nav">
+    <li (click)="seleccionar('perfil')" [ngClass]="{'activo': tabSeleccionado === 'perfil'}">Perfil</li>
+    <li (click)="seleccionar('transmitir')" [ngClass]="{'activo': tabSeleccionado === 'transmitir'}">Transmitir</li>
+  </ul>
+
+  <div *ngIf="tabSeleccionado === 'perfil'">
+    <div class="imagen-perfil">
+      <h2>Imagen de perfil</h2>
+      <div>
+        <img [src]="urlImagenPerfil" alt="Imagen de perfil">
+        <div>
+          <button (click)="actualizarImagen()">Actualizar imagen de perfil</button>
+          <p>El formato debe ser JPEG o PNG y no puede superar los 10 MB.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ajustes-perfil">
+      <h2>Ajustes del perfil</h2>
+      <label for="nombrePerfil">Nombre de perfil:</label>
+      <input type="text" id="nombrePerfil" [(ngModel)]="nombrePerfil"[readonly]="!isEditingNombre">
+      <button (click)="toggleEditNombre()"><i class="fa fa-pencil"></i></button>
+
+      <label for="biografia">Biografía:</label>
+      <textarea id="biografia" [(ngModel)]="biografia"></textarea>
+
+      <button (click)="guardarCambios()">Guardar cambios</button>
+    </div>
+  </div>
+
+  <div *ngIf="tabSeleccionado === 'transmitir'">
+    <div class="clave-transmision">
+      <h2>Clave de transmisión</h2>
+      <div>
+        <label for="serverLink">Link del servidor:</label>
+        <input type="text" id="serverLink" [(ngModel)]="serverLink" [readonly]="!isEditing">
+        <button (click)="toggleEdit()"><i class="fa fa-pencil"></i></button>
+      </div>
+
+      <div>
+        <label for="transmissionKey">Clave:</label>
+        <input [type]="isVisible ? 'text' : 'password'" id="transmissionKey" value='examplekey'>
+        <button (click)="toggleVisibility()"><i class="fa fa-eye"></i></button>
+      </div>
+
+      <p>No compartas la clave con nadie</p>
+    </div>
+  </div>
+</div>

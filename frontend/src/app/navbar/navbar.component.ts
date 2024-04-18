@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SignUpComponent } from "../sign-up/sign-up.component";
 import { LoginComponent } from "../login/login.component"
 import { MatDialog } from "@angular/material/dialog";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -15,8 +16,7 @@ import { MatDialog } from "@angular/material/dialog";
 })
 
 export class NavbarComponent {
-  constructor(private dialogRef: MatDialog) {
-  }
+  constructor(private dialogRef: MatDialog, private router: Router) {}
 
   openDialog(i: number){
     if(i==0){
@@ -25,5 +25,22 @@ export class NavbarComponent {
     else{
       this.dialogRef.open(SignUpComponent)
     }
+  }
+
+  navigateToProfile(){
+    this.router.navigate(['/profile']);
+  }
+  navigateToStreaming(){
+    this.router.navigate(['/streaming']);
+  }
+
+  navigateToFollowing(){
+    this.router.navigate(['/following']);
+  }
+
+  showDropdown= false;
+
+  toggleDropdown(){
+    this.showDropdown=!this.showDropdown;
   }
 }

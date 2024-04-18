@@ -1,7 +1,7 @@
 <div class="navbar">
   <div class="left">
-    <img src="../../assets/Logo.svg" class="logo" alt="Logo"/>
-    <p class="Siguiendo">Siguiendo</p>
+    <img src="../../assets/Logo.svg" class="logo" alt="Logo" (click)="navigateToStreaming()">
+    <div class="Siguiendo" (click)="navigateToFollowing()">Siguiendo</div>
     <p class="Categorias">Categorías</p>
   </div>
   <div class = barra_busqueda>
@@ -11,7 +11,7 @@
     </button>
   </div>
   <div class="profile">
-    <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture">
+    <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture" (click)="toggleDropdown()">
   </div>
   <div>
     <button class="genericButton" (click)="openDialog(0)" >Iniciar sesion</button>
@@ -19,4 +19,15 @@
   <div>
     <button class="genericButton" (click)="openDialog(1)">Registrarse</button>
   </div>
+  <div class="dropdown-content" [class.show-dropdown]="showDropdown">
+    <div class="profile-section">
+      <img src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture" class="dropdown-profile-picture">
+      <p class="profile-name">Nombre de perfil</p>
+    </div>
+    <hr class="dropdown-divider">
+    <a href="#"><i class="fa-solid fa-house icon-spacing"></i>Canal</a>
+    <a href="/profile" ><i class="fa fa-cog icon-spacing"></i>Configuración</a>
+    <a href="#" ><i class="fa-solid fa-microphone-lines icon-spacing"></i>Stremear</a>
+    <a href="/following" ><i class="fa-solid fa-star icon-spacing"></i>Suscriptores</a>
+    <a href="#" ><i class="fa-solid fa-door-closed icon-spacing"></i>Cerrar Sesión</a>
 </div>
