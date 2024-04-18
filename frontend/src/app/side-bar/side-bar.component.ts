@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {StreamerSidebarComponent} from "../streamer-sidebar/streamer-sidebar.component";
 
 @Component({
@@ -11,5 +11,9 @@ import {StreamerSidebarComponent} from "../streamer-sidebar/streamer-sidebar.com
   styleUrl: './side-bar.component.css'
 })
 export class SideBarComponent {
+  @Output() extended =new EventEmitter<boolean>();
 
+  Toggle() {
+    this.extended.emit(false);
+  }
 }

@@ -1,18 +1,11 @@
 
 <main class="streamer-main">
   <article>
-    @if (extended){
-      <app-side-bar></app-side-bar>
-      <button (click)="extended = !extended" class="toggle-btn">
-        &#9778;
-      </button>
+    @if (extend){
+      <app-side-bar (extended)="toogleSidebar($event)" ></app-side-bar>
     } @else {
-      <app-sidenav></app-sidenav>
-      <button (click)="extended = !extended" class="toggle-btn-compressed">
-        &#9778;
-      </button>
+      <app-sidenav (extended)="toogleSidebar($event)" ></app-sidenav>
     }
-
   </article>
 
   <article class="stream">

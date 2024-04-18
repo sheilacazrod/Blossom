@@ -35,4 +35,10 @@ export class StreamingPageComponent {
     }
 
   }
+
+  extend= false;
+
+  toogleSidebar(data: boolean){
+    this.extend=data;
+  }
 }
