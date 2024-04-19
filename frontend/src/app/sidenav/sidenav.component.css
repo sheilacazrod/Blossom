@@ -2,9 +2,26 @@
   height: 100%;
   padding: 10px;
 }
+
+.slash_left{
+  height: 10px;
+  transform: rotate(52deg);
+}
+.arrow-right{
+  height: 10px;
+}
+
+.toggle-btn{
+  border: transparent;
+  background-color: #F9F5E3;
+  cursor: pointer;
+  padding-left: 15px;
+  padding-bottom: 7px;
+}
+
 .follow-icon{
   height: 30px;
-  padding-left: 8px;
+  padding-left: 7px;
 }
 
 .recomendations{
@@ -13,7 +30,7 @@
 }
 
 #first-stream {
-  padding-top: 10px;
+  padding-top: 4px;
   padding-left: 5px;
 }
 
