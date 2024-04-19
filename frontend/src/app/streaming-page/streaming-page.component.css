@@ -1,15 +1,7 @@
-html, body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* Evita la barra de desplazamiento */
-}
-
 .streamer-main {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 145vh;
 }
 
 .stream p{
@@ -18,22 +10,8 @@ html, body {
   color: #753170;
 }
 
-.toggle-btn {
-  cursor: pointer;
-  border: transparent;
-  background-color: #F9F5E3;
-}
-
-.toggle-btn-compressed {
-  position: absolute;
-  left: 22px;
-  bottom: 795px;
-  cursor: pointer;
-  border: transparent;
-  background-color: #F9F5E3;
-}
-
 .stream {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -99,7 +77,3 @@ iframe {
   transform: scale(0.9); /* Reduce el tamaño del botón al hacer clic */
 }
 
-
-#player{
-  width: 100%;
-}
