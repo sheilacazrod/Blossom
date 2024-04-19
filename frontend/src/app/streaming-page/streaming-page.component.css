@@ -1,7 +1,7 @@
 .streamer-main {
   display: flex;
   flex-direction: column;
-  width: 145vh;
+  width: 75vw;
 }
 
 .stream p{
