@@ -41,6 +41,9 @@ export class NavbarComponent {
   navigateToHome(){
     this.router.navigate(['/home']);
   }
+  navigateToCategories(){
+    this.router.navigate(['/categories']);
+  }
 
 
   showDropdown= false;
