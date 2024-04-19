@@ -38,6 +38,11 @@ export class NavbarComponent {
     this.router.navigate(['/following']);
   }
 
+  navigateToHome(){
+    this.router.navigate(['/home']);
+  }
+
+
   showDropdown= false;
 
   toggleDropdown(){
