@@ -1,4 +1,14 @@
 <body>
   <app-navbar></app-navbar>
+  <div class="main-page">
+    <article class="sidebar">
+      @if (extend){
+        <app-side-bar (extended)="toogleSidebar($event)" ></app-side-bar>
+      } @else {
+        <app-sidenav (extended)="toogleSidebar($event)" ></app-sidenav>
+      }
+    </article>
+    <router-outlet></router-outlet>
+  </div>
 </body>
-<router-outlet></router-outlet>
+

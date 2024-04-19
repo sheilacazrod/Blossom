@@ -1,14 +1,4 @@
-
 <main class="streamer-main">
-  <article>
-    @if (extend){
-      <app-side-bar (extended)="toogleSidebar($event)" ></app-side-bar>
-    } @else {
-      <app-sidenav (extended)="toogleSidebar($event)" ></app-sidenav>
-    }
-  </article>
-
-  <article class="stream">
     <iframe id="player" src="https://6ojztw.stackhero-network.com/streaming.html?hls=hls" scrolling="no" allowfullscreen type="video/mp4"></iframe>
     <!--
     <vg-player>
@@ -28,6 +18,5 @@
         <button class="genericButton" (click)="changeSrc(2)">Stream 2</button>
       </div>
     </section>
-  </article>
 </main>
 
