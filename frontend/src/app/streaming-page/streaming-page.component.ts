@@ -17,8 +17,8 @@ import {SidenavComponent} from "../sidenav/sidenav.component";
   styleUrl: './streaming-page.component.css'
 })
 export class StreamingPageComponent {
-  src1: string = "https://6ojztw.stackhero-network.com/streaming.html?hls=hls";
-  src2: string = "https://6ojztw.stackhero-network.com/streaming.html?hls=hls1";
+  src1: string = "http://167.71.61.5/josito";
+  src2: string = "http://167.71.61.5/mica";
   changeSrc(a: number) {
 
     const playerIframe = document.getElementById('player') as HTMLIFrameElement;
