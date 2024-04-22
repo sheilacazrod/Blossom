@@ -1,2 +1,3 @@
 /frontend/certs
 /backend/nginx/conf/passwords.conf
+/backend/Api/src/main/resources/firebase.json

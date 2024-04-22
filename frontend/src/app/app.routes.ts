@@ -12,7 +12,7 @@ export const routes: Routes = [
   { path: 'following', component: FollowingComponent},
   { path: 'home', component: HomeComponent},
   { path: 'categories', component: CategoriesComponent},
-  { path: 'streaming', component: StreamingPageComponent },
+  { path: 'streaming', redirectTo:'/streaming', component: StreamingPageComponent },
 ];
 
 @NgModule({
