@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
-import {SideBarComponent} from "../side-bar/side-bar.component";
-import {SidenavComponent} from "../sidenav/sidenav.component";
+import { Component} from '@angular/core';
+import {NgClass} from "@angular/common";
 
 @Component({
   selector: 'app-categories',
   standalone: true,
   imports: [
-    SideBarComponent,
-    SidenavComponent
+    NgClass
   ],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css'
 })
 export class CategoriesComponent {
-  extended = false;
+  selectedCategory: string = 'VIDEOGAMES';
+  selectCategory(category: string) {
+    this.selectedCategory = category;
+  }
 }
