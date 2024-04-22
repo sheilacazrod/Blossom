@@ -1,33 +1,15 @@
-
 <main class="streamer-main">
-  <article>
-    @if (extend){
-      <app-side-bar (extended)="toogleSidebar($event)" ></app-side-bar>
-    } @else {
-      <app-sidenav (extended)="toogleSidebar($event)" ></app-sidenav>
-    }
-  </article>
 
-  <article class="stream">
-    <iframe id="player" src="https://6ojztw.stackhero-network.com/streaming.html?hls=hls" scrolling="no" allowfullscreen type="video/mp4"></iframe>
-    <!--
-    <vg-player>
-      <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
-        <source src="https://6ojztw.stackhero-network.com/streaming.html?hls=hls" type="video/mp4">
-      </video>
-    </vg-player>
-    -->
-    <section class="streamer">
-      <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture">
-      <div class="streamer-info">
-        <h1 class="username">Tobias</h1>
-        <p class="title">Título Stream</p>
-      </div>
-      <div class="buttons">
-        <button class="genericButton" (click)="changeSrc(1)">Stream 1</button>
-        <button class="genericButton" (click)="changeSrc(2)">Stream 2</button>
-      </div>
-    </section>
-  </article>
+    <iframe id="player" src="" scrolling="no" allowfullscreen type="video/mp4"></iframe>
+  <section class="streamer">
+    <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture">
+    <div class="streamer-info">
+      <h1 class="username">{{usuario}} </h1>
+      <p class="title">Título Stream</p>
+    </div>
+    <div class="buttons">
+      <button class="genericButton" >Seguir</button>
+    </div>
+  </section>
 </main>
 

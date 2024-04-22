@@ -1,0 +1,9 @@
+.main-page{
+  display: flex;
+  width: 100%;
+}
+
+.sidebar{
+  height: 100vh;
+  background-color: #E0B5D0;
+}

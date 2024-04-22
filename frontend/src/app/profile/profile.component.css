@@ -1,14 +1,13 @@
 .configuracion {
   font-family: Arial, sans-serif;
-  max-width: 600px;
   margin: auto;
+  padding-left: 2vw;
 }
 
 .nav {
   list-style: none;
   padding: 20px 0;
   margin: 0;
-  text-align: center;
 }
 
 .nav li {
@@ -20,14 +19,18 @@
 }
 
 .nav li.activo {
-  color: #42033D; /* Color para el elemento activo */
+  color: #F9B4ED; /* Color para el elemento activo */
+  font-weight: bold;
 }
 
-.imagen-perfil, .ajustes-perfil {
+
+.imagen-perfil, .ajustes-perfil, .clave-transmision {
   background-color: #f0e1d2; /* Color de fondo para las secciones */
-  padding: 20px;
+  padding-left: 5%;
   margin-top: 10px;
   border-radius: 5px;
+  min-width: 50vw;
+  padding: 2vw;
 }
 
 button {
@@ -100,4 +103,15 @@ button {
   border-radius: 5px;
   cursor: pointer;
   height: 36px; /* Ajusta la altura para alinear con el input */
+}
+
+#biografia{
+  height: 15vh;
+  width: 95%;
+  resize: none;
+
+}
+
+#nombrePerfil.editar{
+  background-color: #D0A5C0;
 }

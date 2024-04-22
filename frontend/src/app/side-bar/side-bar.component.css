@@ -1,13 +1,27 @@
 .side-bar{
   display: flex;
   height: 100%;
-  padding: 10px;
   flex-direction: column;
+  min-width: 10vw;
+
 }
 
 .recomendations{
-  font-size: 18px;
+  font-size: 11px;
   color: #753170;
+  font-weight: bold;
+  margin-bottom: 0;
+  padding-left: 2px;
 }
 
 
+.top {
+  display: flex; /* Utilizamos flexbox */
+  align-items: center; /* Alineamos los elementos verticalmente */
+}
+
+.fa-solid.fa-angles-left{
+  margin-left: auto;
+  padding: 10px;
+  cursor: pointer;
+}

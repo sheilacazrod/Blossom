@@ -1,34 +1,26 @@
 .sidenav{
   height: 100%;
-  padding: 10px;
 }
 .follow-icon{
-  height: 30px;
-  padding-left: 8px;
+  height: 3vh;
+  padding: 5px;
 }
 
 .recomendations{
   font-size: 18px;
   color: #753170;
 }
-
-#first-stream {
-  padding-top: 10px;
-  padding-left: 5px;
-}
-
 .streamers {
-  padding-left: 5px;
-  padding-top: 7px;
+  padding: 5px;
 }
 
 .profile-picture {
-  height: 30px;
+  height: 3vh;
   border-radius: 50%;
   border: 1px solid #753170;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  margin-bottom: auto;
+  margin: auto;
   cursor: pointer;
 
 }
@@ -38,7 +30,17 @@
   padding: 0;
 }
 
-ul {
-  list-style: none;
+
+.fa-solid.fa-angles-right{
+  padding-top: 5px;
+  cursor: pointer;
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Utilizamos flexbox */
+  flex-direction: column; /* Mostramos los elementos en columna */
+  align-items: center; /* Centramos los elementos horizontalmente */
+}

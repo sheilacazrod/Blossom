@@ -3,7 +3,7 @@
   margin: 5px;
 }
 .profile-picture {
-  height: 100%;
+  height: 4vh;
   border-radius: 50%;
   border: 1px solid #753170;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -13,8 +13,6 @@
 
 .streamer {
   display: flex;
-  padding-top: 10px;
-  height: 30px;
 }
 
 .username {
@@ -22,6 +20,7 @@
   margin-top: 5px;
   margin-left: 5px;
   font-weight: bold;
+  font-size: 75%;
   color: #753170;
 }
 

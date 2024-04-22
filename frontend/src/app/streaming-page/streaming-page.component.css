@@ -1,6 +1,7 @@
 .streamer-main {
   display: flex;
-  height: 75vh;
+  flex-direction: column;
+  width: 75vw;
 }
 
 .stream p{
@@ -9,26 +10,11 @@
   color: #753170;
 }
 
-.toggle-btn {
-  cursor: pointer;
-  border: transparent;
-  background-color: #F9F5E3;
-}
-
-.toggle-btn-compressed {
-  position: absolute;
-  left: 22px;
-  bottom: 795px;
-  cursor: pointer;
-  border: transparent;
-  background-color: #F9F5E3;
-}
-
 .stream {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
 }
 
 iframe {

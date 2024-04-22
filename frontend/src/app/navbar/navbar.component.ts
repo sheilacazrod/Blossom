@@ -2,14 +2,15 @@ import { Component } from '@angular/core';
 import { SignUpComponent } from "../sign-up/sign-up.component";
 import { LoginComponent } from "../login/login.component"
 import { MatDialog } from "@angular/material/dialog";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   imports: [
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    RouterLink
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
@@ -25,17 +26,6 @@ export class NavbarComponent {
     else{
       this.dialogRef.open(SignUpComponent)
     }
-  }
-
-  navigateToProfile(){
-    this.router.navigate(['/profile']);
-  }
-  navigateToStreaming(){
-    this.router.navigate(['/streaming']);
-  }
-
-  navigateToFollowing(){
-    this.router.navigate(['/following']);
   }
 
   showDropdown= false;
