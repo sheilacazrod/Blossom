@@ -34,6 +34,7 @@ import {SidenavComponent} from "./sidenav/sidenav.component";
 })
 export class AppComponent {
   title = 'Blossom';
+
   extend= false;
 
   toogleSidebar(data: boolean){

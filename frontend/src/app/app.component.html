@@ -1,6 +1,6 @@
 <body>
   <app-navbar></app-navbar>
-  <div class="main-page">
+  <section class="main-page">
     <article class="sidebar">
       @if (extend){
         <app-side-bar (extended)="toogleSidebar($event)" ></app-side-bar>
@@ -9,6 +9,8 @@
       }
     </article>
     <router-outlet></router-outlet>
-  </div>
+  </section>
+
+
 </body>
 

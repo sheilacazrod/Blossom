@@ -4,8 +4,7 @@ body {
 }
 
 .popup-content {
-  width: 400px;
-  height: 450px; /* Ajustado para el formulario de inicio de sesión */
+  width: 35vw;
   background-color: #FFDEF3;
   border-radius: 10px;
   border: 2px solid #42033D;
@@ -20,8 +19,8 @@ body {
 }
 
 .popup-icon {
-  width: 100px;
-  height: 100px;
+  width:20%;
+  overflow: hidden;
 }
 
 .popup-title {

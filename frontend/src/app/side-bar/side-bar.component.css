@@ -3,11 +3,13 @@
   height: 100%;
   padding: 10px;
   flex-direction: column;
+  min-width: 10vw;
 }
 
 .recomendations{
-  font-size: 18px;
+  font-size: 11px;
   color: #753170;
+  font-weight: bold;
 }
 
 
