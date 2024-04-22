@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutionException;
 public class CRUDService {
     public String createCRUD(User user) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("users").document(user.getId()).set(user);
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("users").document(user.getUid()).set(user);
         return collectionApiFuture.get().getUpdateTime().toString();
     }
 
@@ -33,7 +33,7 @@ public class CRUDService {
 
     public String updateCRUD(User user) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("users").document(user.getId()).set(user);;
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("users").document(user.getUid()).set(user);;
         return collectionApiFuture.get().getUpdateTime().toString();
     }
 
