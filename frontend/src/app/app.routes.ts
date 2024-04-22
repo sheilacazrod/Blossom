@@ -6,7 +6,7 @@ import {HomeComponent} from "./home/home.component";
 import {CategoriesComponent} from "./categories/categories.component";
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/streaming', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'streaming', component: StreamingPageComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'following', component: FollowingComponent},
