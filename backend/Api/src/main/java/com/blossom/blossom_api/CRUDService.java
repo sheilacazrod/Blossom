@@ -12,28 +12,28 @@ import java.util.concurrent.ExecutionException;
 
 @Service
 public class CRUDService {
-    public String createCRUD(CRUD crud) throws ExecutionException, InterruptedException {
+    public String createCRUD(User user) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("users").document(crud.getId()).set(crud);
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("users").document(user.getId()).set(user);
         return collectionApiFuture.get().getUpdateTime().toString();
     }
 
-    public CRUD getCRUD(String id) throws ExecutionException, InterruptedException {
+    public User getCRUD(String id) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference docRef = dbFirestore.collection("users").document(id);
         ApiFuture<DocumentSnapshot> future = docRef.get();
         DocumentSnapshot documentSnapshot = future.get();
-        CRUD crud;
+        User user;
         if (documentSnapshot.exists()) {
-            crud = documentSnapshot.toObject(CRUD.class);
-            return crud;
+            user = documentSnapshot.toObject(User.class);
+            return user;
         }
         return null;
     }
 
-    public String updateCRUD(CRUD crud) throws ExecutionException, InterruptedException {
+    public String updateCRUD(User user) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("users").document(crud.getId()).set(crud);;
+        ApiFuture<WriteResult> collectionApiFuture = dbFirestore.collection("users").document(user.getId()).set(user);;
         return collectionApiFuture.get().getUpdateTime().toString();
     }
 
