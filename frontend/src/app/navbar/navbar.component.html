@@ -1,8 +1,8 @@
 <div class="navbar">
   <div class="left">
-    <img src="../../assets/Logo.svg" class="logo" alt="Logo" (click)="navigateToHome()">
-    <div class="Siguiendo" (click)="navigateToFollowing()">Siguiendo</div>
-    <p class="Categorias" (click)="navigateToCategories()" >Categorías</p>
+    <img src="../../assets/Logo.svg" class="logo" alt="Logo" routerLink="/home">
+    <div class="Siguiendo" routerLink="/following" routerLinkActive="active-link">Siguiendo</div>
+    <p class="Categorias" routerLink="/categories" routerLinkActive="active-link">Categorías</p>
   </div>
   <div class = barra_busqueda>
     <input type="text" placeholder="Buscar">
@@ -30,4 +30,5 @@
     <a href="#" ><i class="fa-solid fa-microphone-lines icon-spacing"></i>Stremear</a>
     <a href="/following" ><i class="fa-solid fa-star icon-spacing"></i>Suscriptores</a>
     <a href="#" ><i class="fa-solid fa-door-closed icon-spacing"></i>Cerrar Sesión</a>
+  </div>
 </div>

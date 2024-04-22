@@ -84,6 +84,7 @@ input {
 .genericButton:active {
   transform: scale(0.9); /* Reduce el tamaño del botón al hacer clic */
 }
+
 .button {
   background-color: #F9B4ED;
   color: #000000;
