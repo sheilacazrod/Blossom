@@ -1,9 +1,15 @@
 
+@font-face {
+  font-family: Libre Baskerville;
+  src: url("/Fonts/LibreBaskerville-Bold.ttf");
+}
+
 body {
   color: #42033D;
 }
 
 .popup-content {
+  font-family: 'Libre Baskerville';
   width: 35vw;
   background-color: #FFDEF3;
   border-radius: 10px;
@@ -14,6 +20,7 @@ body {
 
 
 .popup-header {
+  color: #42033D;
   display: flex;
   align-items: center;
 }
@@ -25,7 +32,7 @@ body {
 
 .popup-title {
   text-align: left;
-  font-size: 24px;
+  font-size: 150%;
   margin-left: 10px;
 }
 
