@@ -22,7 +22,7 @@ public class FirebaseService {
         DocumentReference docRef = dbFirestore.collection("users").document(user.getUid());
         docRef.set(userData);
     }
-    ///TODO lista de puertos
+
     private int generateRandomPort() {
         return PortManager.generateRandomPort();
     }

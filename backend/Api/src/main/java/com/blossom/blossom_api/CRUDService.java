@@ -5,6 +5,9 @@ import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.WriteResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseToken;
 import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +44,13 @@ public class CRUDService {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> writeResultApiFuture = dbFirestore.collection("users").document(id).delete();
         return "Successfully deleted " + id;
+    }
+
+    public String startstreaming(String authToken) throws FirebaseAuthException {
+        FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(authToken);
+
+        String uid = decodedToken.getUid();
+
+        return "El streaming ha comenzado para el usuario con UID: " + uid;
     }
 }
