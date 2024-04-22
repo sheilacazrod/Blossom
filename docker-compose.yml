@@ -1,13 +1,15 @@
 version: '3.8'
 
-services:
-  nginx:
-    labels:
-      - "traefik.enable=true" # Enable Traefik to route traffic to this container
-      - "traefik.http.routers.test.rule=Host(`6ojztw.stackhero-network.com`)" # Defined host
-      - "traefik.http.routers.test.tls.certresolver=letsencrypt" # Use
-    image: angular_test
-    ports:
-      - "1935:1935"
-      - "4200:80"
+# network = 172.20.0.0/16
+# gateway = 172.20.0.1
+networks:
+  frontend_network:
+    external: true
+    name: docker_frontend_network
 
+services:
+  web:
+    image: frontend-angular
+    container_name: frontend_angular
+    networks:
+      - frontend_network

@@ -1,17 +1,10 @@
-FROM node:18.13-alpine as build
+FROM nginx:latest
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY . /app
 
-RUN npm install
+RUN rm /usr/share/nginx/html/index.html
+RUN cp -r /app/dist/browser/* /usr/share/nginx/html 
 
-COPY . .
-
-RUN npm install
-
-ARG configuration=production
-
-# Modificar el comando para que los archivos compilados se guarden en /app/output
-RUN npm run build -- --output-path=/tmp --configuration=$configuration
-
+CMD ["nginx", "-g", "daemon off;"]

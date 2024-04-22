@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Objects;
+import java.io.InputStream;
 
 @SpringBootApplication
 public class BlossomApiApplication {
@@ -18,10 +19,16 @@ public class BlossomApiApplication {
 
         ClassLoader classLoader = BlossomApiApplication.class.getClassLoader();
 
-        File file = new File(Objects.requireNonNull(classLoader.getResource("firebase.json")).getFile());
-        FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
+        //File file = new File(Objects.requireNonNull(classLoader.getResource("firebase.json")).getFile());
+        //FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
+	
+	InputStream inputStream = classLoader.getResourceAsStream("firebase.json");
+        if (inputStream == null) {
+            throw new IllegalStateException("El archivo firebase.json no se encontró en el classpath");
+        }
+
         FirebaseOptions options = new FirebaseOptions.Builder()
-                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                .setCredentials(GoogleCredentials.fromStream(inputStream))
                 .build();
 
         FirebaseApp.initializeApp(options);
