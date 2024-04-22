@@ -42,7 +42,7 @@ public class AppController {
 
             firestoreService.saveUserToFirestore(user);
 
-            return ResponseEntity.ok("Usuario registrado con correo electrónico: " + userRecord.getEmail());
+            return ResponseEntity.ok("Usuario registrado con correo UID: " + userRecord.getUid());
         } catch (FirebaseAuthException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al registrar usuario: " + e.getMessage());
         }
