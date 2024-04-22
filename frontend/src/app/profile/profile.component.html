@@ -33,6 +33,7 @@
   <div *ngIf="tabSeleccionado === 'transmitir'">
     <div class="clave-transmision">
       <h2>Clave de transmisión</h2>
+      <button class="genericButton" >Generar clave de retransmisión</button>
       <div>
         <label for="serverLink">Link del servidor:</label>
         <input type="text" id="serverLink" [(ngModel)]="serverLink" [readonly]="true">

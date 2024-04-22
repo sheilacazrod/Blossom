@@ -115,3 +115,15 @@ button {
 #nombrePerfil.editar{
   background-color: #D0A5C0;
 }
+
+.genericButton{
+  padding: 10px;
+  margin-top: 0; /* Alinea el botón con el input */
+  border-radius: 5px;
+  cursor: pointer;
+  height: 36px; /* Ajusta la altura para alinear con el input */
+}
+
+.genericButton:active {
+  transform: scale(0.9); /* Reduce el tamaño del botón al hacer clic */
+}
