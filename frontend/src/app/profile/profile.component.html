@@ -4,6 +4,7 @@
     <li (click)="seleccionar('transmitir')" [ngClass]="{'activo': tabSeleccionado === 'transmitir'}">Transmitir</li>
   </ul>
 
+
   <div *ngIf="tabSeleccionado === 'perfil'">
     <div class="imagen-perfil">
       <h2>Imagen de perfil</h2>
@@ -19,7 +20,7 @@
     <div class="ajustes-perfil">
       <h2>Ajustes del perfil</h2>
       <label for="nombrePerfil">Nombre de perfil:</label>
-      <input type="text" id="nombrePerfil" [(ngModel)]="nombrePerfil"[readonly]="!isEditingNombre">
+      <input type="text" id="nombrePerfil" [(ngModel)]="nombrePerfil"[readonly]="!isEditingNombre" [ngClass]="{'editar': isEditingNombre === false }">
       <button (click)="toggleEditNombre()"><i class="fa fa-pencil"></i></button>
 
       <label for="biografia">Biografía:</label>
@@ -34,13 +35,12 @@
       <h2>Clave de transmisión</h2>
       <div>
         <label for="serverLink">Link del servidor:</label>
-        <input type="text" id="serverLink" [(ngModel)]="serverLink" [readonly]="!isEditing">
-        <button (click)="toggleEdit()"><i class="fa fa-pencil"></i></button>
+        <input type="text" id="serverLink" [(ngModel)]="serverLink" [readonly]="true">
       </div>
 
       <div>
         <label for="transmissionKey">Clave:</label>
-        <input [type]="isVisible ? 'text' : 'password'" id="transmissionKey" value='examplekey'>
+        <input [type]="isVisible ? 'text' : 'password'" id="transmissionKey" value='examplekey' [readonly]="true">
         <button (click)="toggleVisibility()"><i class="fa fa-eye"></i></button>
       </div>
 
