@@ -51,6 +51,7 @@ main{
 }
 
 .video {
+  cursor: pointer;
   width: calc(25% - 5%);
   margin: 10px;
 }

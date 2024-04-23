@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {StreamerSidebarComponent} from "../streamer-sidebar/streamer-sidebar.component";
 import { EventEmitter, Output } from '@angular/core';
+import {RouterLink} from "@angular/router";
 
 
 
@@ -9,7 +10,8 @@ import { EventEmitter, Output } from '@angular/core';
   standalone: true,
   templateUrl: './sidenav.component.html',
   imports: [
-    StreamerSidebarComponent
+    StreamerSidebarComponent,
+    RouterLink
   ],
   styleUrl: './sidenav.component.css'
 })

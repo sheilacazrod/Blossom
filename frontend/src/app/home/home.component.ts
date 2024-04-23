@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import {NgForOf} from "@angular/common";
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import {RouterLink} from "@angular/router";
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
