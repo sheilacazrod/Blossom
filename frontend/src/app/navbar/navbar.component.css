@@ -54,6 +54,7 @@ input {
 }
 
 .profile-picture {
+  cursor: pointer;
   width: 40px;
   height: auto;
   border-radius: 50%;
