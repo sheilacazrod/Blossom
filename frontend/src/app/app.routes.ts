@@ -5,7 +5,6 @@ import {FollowingComponent} from "./following/following.component";
 import {HomeComponent} from "./home/home.component";
 import {CategoriesComponent} from "./categories/categories.component";
 import {NgModule} from "@angular/core";
-import {TogglestreambuttonComponent} from "./togglestreambutton/togglestreambutton.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,7 +13,6 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'categories', component: CategoriesComponent},
   { path: 'streaming', component: StreamingPageComponent },
-  { path: 'togglebutton', component: TogglestreambuttonComponent},
 
 ];
 

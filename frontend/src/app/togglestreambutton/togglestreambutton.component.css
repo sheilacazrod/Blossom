@@ -3,7 +3,6 @@
   font-size: 15px;
   border-radius: 8px;
   box-sizing: border-box;
-  transition: background-color 0.3s;
   min-width: 160px;
   text-align: center;
 }
