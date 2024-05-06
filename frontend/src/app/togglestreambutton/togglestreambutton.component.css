@@ -11,8 +11,16 @@
   background-color: #F9B4ED;
 }
 
+.boton-iniciar:hover, .boton-actualizar:hover {
+  background-color: #d0a5c0;
+}
+
 .boton-detener {
   background-color: #FF0000;
+}
+
+.boton-detener:hover {
+  background-color: rgb(200, 0, 0);
 }
 
 .contenedor-botones {
@@ -27,3 +35,5 @@
   background-color: #F9B4ED;
   margin-right: 50px;
 }
+
+

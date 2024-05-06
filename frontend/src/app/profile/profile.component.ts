@@ -12,6 +12,7 @@ import {TogglestreambuttonComponent} from "../togglestreambutton/togglestreambut
 })
 
 export class ProfileComponent implements OnInit {
+  selected_categories: Set<string> = new Set();
   tabSeleccionado: string = 'perfil';
   urlImagenPerfil: string = 'ruta-a-tu-imagen.jpg';
   nombrePerfil: string = 'Perfil-Name';
@@ -75,4 +76,11 @@ export class ProfileComponent implements OnInit {
     // Aquí puedes inicializar cualquier lógica que necesites cuando el componente se cargue
   }
 
+  addCategory(Category: string) {
+    this.selected_categories.add(Category);
+  }
+
+  eraseCategory(Category: string) {
+    this.selected_categories.delete(Category);
+  }
 }
