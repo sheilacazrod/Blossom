@@ -18,10 +18,6 @@ export class ProfileComponent implements OnInit {
   selected_categories: Set<string> = new Set();
   tabSeleccionado: string = 'perfil';
   urlImagenPerfil: string = 'ruta-a-tu-imagen.jpg';
-  nombrePerfil: string = 'Perfil-Name';
-  biografia: string = 'Deja que los demás sepan de ti, escribe tu biografía';
-  serverLink: string = 'https://server.com/link'; // Link del servidor
-  isEditing: boolean = false; // Controla si el link del servidor es editable
   isVisible: boolean = false; // Controla la visibilidad de la clave de transmisión
   isEditingNombre: boolean = false;
 
@@ -35,9 +31,6 @@ export class ProfileComponent implements OnInit {
 
   constructor(private apiService: ApiService,
               private authService: FirebaseAuthService,) {
-    this.nombrePerfil = this.nombrePerfil;
-    this.biografia = this.biografia;
-    this.urlImagenPerfil = '../../assets/Profile.png';
   }
 
   ngOnInit(): void {
@@ -49,6 +42,7 @@ export class ProfileComponent implements OnInit {
   async getUserData(): Promise<void> {
     try {
       this.user = await this.apiService.getUserData();
+      this.urlImagenPerfil = this.user?.pictureURL || '';
     } catch (error) {
       console.error('Error al obtener datos de usuario:', error);
     }
@@ -79,10 +73,6 @@ export class ProfileComponent implements OnInit {
 
   guardarCambios() {
     // Lógica para guardar los cambios del perfil
-  }
-
-  toggleEdit() {
-    this.isEditing = !this.isEditing;
   }
 
   toggleVisibility() {
