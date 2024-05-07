@@ -4,6 +4,7 @@ import { LoginComponent } from "../login/login.component"
 import { MatDialog } from "@angular/material/dialog";
 import {Router, RouterLink} from "@angular/router";
 import {FirebaseAuthService} from "../services/firebase-auth.service";
+import {User} from "../model/user";
 
 @Component({
   selector: 'app-navbar',
@@ -18,6 +19,7 @@ import {FirebaseAuthService} from "../services/firebase-auth.service";
 })
 
 export class NavbarComponent {
+  user: User | null = null;
   loggedNavbarView: boolean = false
   constructor(private dialogRef: MatDialog,
               private router: Router,
@@ -27,6 +29,8 @@ export class NavbarComponent {
     this.authService.user$.subscribe(user => {
       this.loggedNavbarView = !!user;
     });
+
+
   }
 
 
@@ -43,5 +47,14 @@ export class NavbarComponent {
 
   toggleDropdown(){
     this.showDropdown=!this.showDropdown;
+  }
+
+  onLogout() {
+    this.authService.logout();
+    console.log(this.router.url)
+    if(this.router.url != 'home') {
+      this.router.navigate(['/home'])
+      this.showDropdown=false;
+    }
   }
 }

@@ -49,7 +49,7 @@ export class AppComponent {
         // @ts-ignore
         this.authService.currentUserSig.set({
           email: user.email!,
-          name: user.displayName!,
+          displayName: user.displayName!,
         });
       } else {
         this.authService.currentUserSig.set(null)
