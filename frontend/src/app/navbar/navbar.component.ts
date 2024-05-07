@@ -3,6 +3,7 @@ import { SignUpComponent } from "../sign-up/sign-up.component";
 import { LoginComponent } from "../login/login.component"
 import { MatDialog } from "@angular/material/dialog";
 import {Router, RouterLink} from "@angular/router";
+import {FirebaseAuthService} from "../services/firebase-auth.service";
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +18,17 @@ import {Router, RouterLink} from "@angular/router";
 })
 
 export class NavbarComponent {
-  constructor(private dialogRef: MatDialog, private router: Router) {}
+  loggedNavbarView: boolean = false
+  constructor(private dialogRef: MatDialog,
+              private router: Router,
+              private authService: FirebaseAuthService) {}
+
+  ngOnInit(): void {
+    this.authService.user$.subscribe(user => {
+      this.loggedNavbarView = !!user;
+    });
+  }
+
 
   openDialog(i: number){
     if(i==0){

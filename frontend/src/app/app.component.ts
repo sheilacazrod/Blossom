@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {StreamingPageComponent} from "./streaming-page/streaming-page.component";
 import {NavbarComponent} from "./navbar/navbar.component";
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {SideBarComponent} from "./side-bar/side-bar.component";
 import {SidenavComponent} from "./sidenav/sidenav.component";
+import {FirebaseAuthService} from "./services/firebase-auth.service";
 
 @Component({
   selector: 'app-root',
@@ -39,5 +40,21 @@ export class AppComponent {
 
   toogleSidebar(data: boolean){
     this.extend=data;
+  }
+
+  authService = inject(FirebaseAuthService)
+  ngOnInit(): void{
+    this.authService.user$.subscribe((user) =>{
+      if(user){
+        // @ts-ignore
+        this.authService.currentUserSig.set({
+          email: user.email!,
+          name: user.displayName!,
+        });
+      } else {
+        this.authService.currentUserSig.set(null)
+      }
+      console.log(this.authService.currentUserSig());
+    });
   }
 }

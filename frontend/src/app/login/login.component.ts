@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FirebaseAuthService} from "../services/firebase-auth.service";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-login',
@@ -11,19 +13,25 @@ import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private authService: FirebaseAuthService,
+              private dialogRef: MatDialogRef<LoginComponent>) {
   }
-  loginForm = this.fb.group({
-    loginUser: ['', [Validators.required]],
+  loginForm = this.fb.nonNullable.group({
+    loginMail: ['', [Validators.required]],
     loginPwd: ['',[ Validators.required,]]
   });
 
   submit() {
-    if (this.loginForm.valid) {
-      console.log('Usuario autenticado')
-    }
-    else{
-      console.log('Error')
-    }
+    const rawForm = this.loginForm.getRawValue();
+    this.authService.login(rawForm.loginMail, rawForm.loginPwd)
+      .subscribe({
+        next: () =>{
+          this.dialogRef.close();
+        },
+        error: (error) => {
+          console.log(error.code);
+        }
+      });
   }
 }

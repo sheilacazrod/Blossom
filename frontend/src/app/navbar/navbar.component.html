@@ -11,15 +11,19 @@
       <i class="fa-solid fa-magnifying-glass textarea-icon"></i>
     </button>
   </div>
-  <div class="profile">
-    <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture" (click)="toggleDropdown()">
-  </div>
-  <div>
-    <button class="genericButton" (click)="openDialog(0)" >Iniciar sesion</button>
-  </div>
-  <div>
-    <button class="genericButton" (click)="openDialog(1)">Registrarse</button>
-  </div>
+  @if (loggedNavbarView){
+    <div class="profile">
+      <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture" (click)="toggleDropdown()">
+    </div>
+
+  } @else {
+    <div>
+      <button class="genericButton" (click)="openDialog(0)" >Iniciar sesion</button>
+    </div>
+    <div>
+      <button class="genericButton" (click)="openDialog(1)">Registrarse</button>
+    </div>
+  }
   <div class="dropdown-content" [class.show-dropdown]="showDropdown">
     <div class="profile-section">
       <img src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture" class="dropdown-profile-picture">
