@@ -11,18 +11,92 @@
         <li class="category" (click)="selectCategory('MUSIC')" [ngClass]="{'selected': selectedCategory === 'MUSIC'}">MUSIC <img class="category__img" src="/assets/music-solid.svg"></li>
       </ul>
     </article>
+    @if (selectedCategory === 'VIDEOGAMES') {
+      <div class="additional-videos">
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Videogames/helldivers.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Videogames/BG3.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Videogames/Elden-Ring.png"> </a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Videogames/Lethal-Company.png"></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Videogames/Sekiro.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Videogames/Splatoon-2.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Videogames/SSBU.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Videogames/Zelda.png" ></a></div>
+        <div class="video" routerLink="/streaming" ></div>
+        <!-- Agrega más videos aquí según sea necesario -->
+      </div>
+    } @else if (selectedCategory === 'ESPORTS') {
+      <div class="additional-videos">
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Esports/Brawlhalla.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Esports/CSGO.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Esports/EVO.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Esports/FIFA.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Esports/GT.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Esports/LOL.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Esports/SSC.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Esports/Valorant.png" ></a></div>
+        <div class="video" routerLink="/streaming" ></div>
+        <!-- Agrega más videos aquí según sea necesario -->
+      </div>
+    } @else if (selectedCategory === 'JUST CHATTING') {
+      <div class="additional-videos">
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Just-Chatting/BaityBait.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Just-Chatting/CofeGuy.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Just-Chatting/illojuan.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/Just-Chatting/XQC.png" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://clips-media-assets2.twitch.tv/AT-cm%7C975246683-preview-480x272.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://pbs.twimg.com/ext_tw_video_thumb/1698966031790641152/pu/img/QC0WBlzLtawUA5ok.jpg:large" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://clips-media-assets2.twitch.tv/Q0O9sSOEOmhxDu7uqYi_1g/AT-cm%7CQ0O9sSOEOmhxDu7uqYi_1g-preview-480x272.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_opoartstudy-440x248.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ></div>
+        <!-- Agrega más videos aquí según sea necesario -->
+      </div>
+    } @else if (selectedCategory === 'IRL') {
+      <div class="additional-videos">
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://www.mundodeportivo.com/us/files/content_image_desktop_filter/uploads/2023/12/17/657f7a9f26c5e.jpeg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://staticg.sportskeeda.com/editor/2020/11/6d4b6-16051790288140-800.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2020/07/hipertextual-reckful-mejor-jugador-world-of-warcraft-muere-31-anos-presunto-suicidio-2020385440.jpg?w=1500&quality=55&strip=all&ssl=1" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://images.ecestaticos.com/oeXyqNhQqblpj5A0d7eBNWFecyc=/0x0:2272x1278/600x450/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F06d%2Fd70%2F70c%2F06dd7070c36ad5ff8e8278e2cce497cb.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://imagenes.20minutos.es/files/image_640_360/files/fp/uploads/imagenes/2023/09/29/el-streamer-de-irl-kidi.r_d.587-537-5926.jpeg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://metro.co.uk/wp-content/uploads/2023/07/irl-twitch-streamer-cooksux-621a.jpg?quality=90&strip=all&zoom=1&resize=644%2C362" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://www.dexerto.com/cdn-cgi/image/width=828,quality=60,format=auto/https://editors.dexerto.com/wp-content/uploads/2022/04/28/Sodapoppin-unbanned.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="../../Images/IRL/greenheir.png" ></a></div>
+        <div class="video" routerLink="/streaming" ></div>
+        <!-- Agrega más videos aquí según sea necesario -->
+      </div>
+    } @else if (selectedCategory === 'CREATIVE') {
+      <div class="additional-videos">
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_tofusenshi-440x248.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_moliestriga-440x248.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_vircescrap-440x248.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_electrocereal-440x248.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_tinamoon_art-440x248.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_prokostream-440x248.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_mikamuse-440x248.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_neiakori-440x248.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ></div>
+        <!-- Agrega más videos aquí según sea necesario -->
+      </div>
+    } @else if (selectedCategory === 'MUSIC') {
+      <div class="additional-videos">
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_thecoffeeelf-470x265.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_colawaytv-470x265.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_technoliebenundlebentv-470x265.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_jonlimusic-470x265.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_cactusroom-470x265.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_mikarosemusic-470x265.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_arcajazz-470x265.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ><a src="./assets/previsualizacion_stream.webp" ><img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_dani_el_delrio-470x265.jpg" ></a></div>
+        <div class="video" routerLink="/streaming" ></div>
+        <!-- Agrega más videos aquí según sea necesario -->
+      </div>
+    }
+
     <div class="additional-videos">
-      <div class="video" routerLink="/streaming" ><img src="./assets/previsualizacion_stream.webp" alt="Video 1"></div>
-      <div class="video" routerLink="/streaming" ><img src="./assets/previsualizacion_stream.webp" alt="Video 2"></div>
-      <div class="video" routerLink="/streaming" ><img src="./assets/previsualizacion_stream.webp" alt="Video 3"></div>
-      <div class="video" routerLink="/streaming" ><img src="./assets/previsualizacion_stream.webp" alt="Video 4"></div>
-      <div class="video" routerLink="/streaming"><img src="./assets/previsualizacion_stream.webp" alt="Video 1"></div>
-      <div class="video" routerLink="/streaming" ><img src="./assets/previsualizacion_stream.webp" alt="Video 2"></div>
-      <div class="video" routerLink="/streaming" ><img src="./assets/previsualizacion_stream.webp" alt="Video 3"></div>
-      <div class="video" routerLink="/streaming" ><img src="./assets/previsualizacion_stream.webp" alt="Video 4"></div>
-      <!-- Agrega más videos aquí según sea necesario -->
+
     </div>
+
   </div>
+
 
 
   <!--  <article class="streams">-->
