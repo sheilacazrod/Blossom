@@ -22,6 +22,15 @@ export class HomeComponent {
     'https://www.youtube.com/embed/av4sEcTS8QA'
   ];
 
+  streamers = [
+    'https://i.blogs.es/a715d3/rubius/1366_2000.jpeg',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5JqVe5lDdlXcDJuNgPQpCs-pENfczAzFzQ41sfCJlJQ&s',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgYcIqWxkkONiyWo_UbJgaoWV328_jMEkvVEj_JKpi4g&s',
+    'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2019/05/ninja-twitch.jpg?tf=3840x',
+    'https://fotos.perfil.com/2023/03/01/trim/1280/720/exodo-de-streamers-de-twitch-1518757.jpg',
+    'https://orientacion-laboral.infojobs.net/wp-content/uploads/2023/04/streamers-jovenes-02.jpg'
+  ];
+
   currentIndex = 0;
 
   next() {
