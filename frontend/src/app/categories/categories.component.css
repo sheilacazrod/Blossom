@@ -54,6 +54,7 @@ main{
   cursor: pointer;
   width: calc(25% - 5%);
   margin: 10px;
+
 }
 
 .video img {
@@ -63,6 +64,12 @@ main{
 .content{
   display: flex;
 }
+
+img {
+  width: 250px;
+  height: 130px;
+}
+
 /*.streams_1 {*/
 /*  flex: 1; !* Hacemos que esta sección ocupe el espacio restante *!*/
 /*  display: flex; !* Utilizamos flexbox para alinear los elementos de los streams *!*/
