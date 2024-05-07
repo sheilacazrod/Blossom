@@ -10,6 +10,7 @@ import {from, Observable} from "rxjs";
 import {User} from "../model/user";
 import {doc, Firestore, getDoc, setDoc, updateDoc} from "@angular/fire/firestore";
 import {HttpClient} from "@angular/common/http";
+import {ApiService} from "./ApiService";
 
 
 @Injectable({
@@ -23,7 +24,7 @@ export class FirebaseAuthService {
   user$ = user(this.firebaseAuth);
   currentUserSig = signal<User | null | undefined>(undefined);
 
-  constructor(private http: HttpClient) {
+  constructor(private apiService: ApiService ,private http: HttpClient) {
   }
   login(email: string, password: string): Observable<void>{
     const promise = signInWithEmailAndPassword(this.firebaseAuth, email, password)
@@ -42,7 +43,16 @@ export class FirebaseAuthService {
         console.log("Response register: ", response);
         try {
           const profilePic: string = 'https://png.pngtree.com/background/20230525/original/pngtree-an-egg-with-a-sad-face-sitting-on-a-dark-background-picture-image_2726098.jpg'
-          await this.saveUserData(username, profilePic);
+          this.apiService.saveUserData(username, profilePic).subscribe(
+            response => {
+              console.log('Respuesta del servidor:', response);
+              // Aquí puedes manejar la respuesta del servidor
+            },
+            error => {
+              console.error('Error al realizar la solicitud:', error);
+              // Aquí puedes manejar el error
+            }
+          );
           // await this.verifyUserEmail();
           return updateProfile(response.user, {displayName: username});
         } catch(error) {
@@ -51,21 +61,6 @@ export class FirebaseAuthService {
       });
     return from(promise)
   }
-  async saveUserData(username: string, profilePictureURL:string) {
-    const auth = getAuth();
-    const user = auth.currentUser;
-
-    const usuario: User = {
-      uid: user?.uid || '',
-      displayName: username,
-      profilePicture: profilePictureURL,
-      biography: '',
-      email: ''
-    };
-    //167.71.61.5:8080/createUser
-    return this.http.post<any>('http://localhost:8080/createUser', usuario);
-  }
-
   async getUserData(): Promise<any> {
     const auth = getAuth();
     const user = auth.currentUser;
