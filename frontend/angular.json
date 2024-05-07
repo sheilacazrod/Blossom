@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Blossom": {
+    "blossom": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Blossom:build:production"
+              "buildTarget": "blossom:build:production"
             },
             "development": {
-              "buildTarget": "Blossom:build:development"
+              "buildTarget": "blossom:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Blossom:build"
+            "buildTarget": "blossom:build"
           }
         },
         "test": {
