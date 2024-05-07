@@ -84,3 +84,4 @@ export class ProfileComponent implements OnInit {
     this.selected_categories.delete(Category);
   }
 }
+
