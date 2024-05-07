@@ -56,7 +56,7 @@ input {
 .profile-picture {
   cursor: pointer;
   width: 40px;
-  height: auto;
+  height: 40px;
   border-radius: 50%;
   border: 1px solid #753170;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -166,8 +166,8 @@ input {
 
 /* Estilo para la imagen de perfil en el menú desplegable */
 .dropdown-profile-picture {
-  width: 30px; /* Ajusta el tamaño según necesites */
-  height: 30px; /* Ajusta el tamaño según necesites */
+  width: 40px; /* Ajusta el tamaño según necesites */
+  height: 40px; /* Ajusta el tamaño según necesites */
   border-radius: 50%;
   margin-right: 10px;
 }

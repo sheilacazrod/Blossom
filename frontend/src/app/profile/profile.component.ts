@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {TogglestreambuttonComponent} from "../togglestreambutton/togglestreambutton.component";
+import {User} from "../model/user";
+import {ApiService} from "../services/ApiService";
+import {FirebaseAuthService} from "../services/firebase-auth.service";
 
 @Component({
   selector: 'app-profile',
@@ -21,14 +24,34 @@ export class ProfileComponent implements OnInit {
   isEditing: boolean = false; // Controla si el link del servidor es editable
   isVisible: boolean = false; // Controla la visibilidad de la clave de transmisión
   isEditingNombre: boolean = false;
+
+
+  user: User | null = null;
+
+
   seleccionar(tab: string) {
     this.tabSeleccionado = tab;
   }
 
-  constructor() {
+  constructor(private apiService: ApiService,
+              private authService: FirebaseAuthService,) {
     this.nombrePerfil = this.nombrePerfil;
     this.biografia = this.biografia;
     this.urlImagenPerfil = '../../assets/Profile.png';
+  }
+
+  ngOnInit(): void {
+    this.authService.user$.subscribe(user => {
+      this.getUserData();
+    });
+  }
+
+  async getUserData(): Promise<void> {
+    try {
+      this.user = await this.apiService.getUserData();
+    } catch (error) {
+      console.error('Error al obtener datos de usuario:', error);
+    }
   }
 
   actualizarImagen() {
@@ -70,10 +93,6 @@ export class ProfileComponent implements OnInit {
 
   toggleEditNombre() {
     this.isEditingNombre = !this.isEditingNombre;
-  }
-
-  ngOnInit(): void {
-    // Aquí puedes inicializar cualquier lógica que necesites cuando el componente se cargue
   }
 
   addCategory(Category: string) {
