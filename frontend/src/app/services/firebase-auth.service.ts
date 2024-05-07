@@ -9,6 +9,7 @@ import {
 import {from, Observable} from "rxjs";
 import {User} from "../model/user";
 import {doc, Firestore, getDoc, setDoc, updateDoc} from "@angular/fire/firestore";
+import {HttpClient} from "@angular/common/http";
 
 
 @Injectable({
@@ -22,6 +23,8 @@ export class FirebaseAuthService {
   user$ = user(this.firebaseAuth);
   currentUserSig = signal<User | null | undefined>(undefined);
 
+  constructor(private http: HttpClient) {
+  }
   login(email: string, password: string): Observable<void>{
     const promise = signInWithEmailAndPassword(this.firebaseAuth, email, password)
       .then(() =>{});
@@ -48,54 +51,25 @@ export class FirebaseAuthService {
       });
     return from(promise)
   }
-  async saveUserData(username: string, profilePictureURL?:string) {
+  async saveUserData(username: string, profilePictureURL:string) {
     const auth = getAuth();
     const user = auth.currentUser;
 
-    try {
-      if(user) {
-        const userRef = doc(this._firestore, 'users/' + user?.uid);
-
-        const userSnapshot = await getDoc(userRef);
-        const userData = userSnapshot.data();
-
-        if(userData) {
-          await updateDoc(userRef, {
-            'displayName': username,
-          });
-          // await this.updateUserEmail(email, password);
-          return true;
-        } else {
-          await setDoc(userRef, {
-            'displayName': username,
-            'profilePictureURL': profilePictureURL
-          }, { merge: true });
-          return true;
-        }
-      }
-      return false;
-    } catch (error) {
-      console.error("Ha ocurrido un error al guardar los datos:", error);
-      return false;
-    }
+    const usuario: User = {
+      uid: user?.uid || '',
+      displayName: username,
+      profilePicture: profilePictureURL,
+      biography: '',
+      email: ''
+    };
+    //167.71.61.5:8080/createUser
+    return this.http.post<any>('http://localhost:8080/createUser', usuario);
   }
 
   async getUserData(): Promise<any> {
     const auth = getAuth();
     const user = auth.currentUser;
-
-    try {
-      if(user) {
-        const docSnap = await getDoc(doc(this._firestore, 'users/' + user?.uid));
-        if(docSnap.exists()) {
-          console.log("Entro en getUserData")
-          return { ...docSnap.data()};
-        }
-        return;
-      }
-    } catch (error) {
-      console.error("Ha ocurrido un error al guardar los datos:", error);
-      return [];
-    }
+    //167.71.61.5:8080/getUserById
+    return this.http.post<any>('http://localhost:8080/getUserById', user?.uid);
   }
 }
