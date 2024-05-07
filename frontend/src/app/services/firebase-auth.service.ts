@@ -43,16 +43,20 @@ export class FirebaseAuthService {
         console.log("Response register: ", response);
         try {
           const profilePic: string = 'https://png.pngtree.com/background/20230525/original/pngtree-an-egg-with-a-sad-face-sitting-on-a-dark-background-picture-image_2726098.jpg'
-          this.apiService.saveUserData(username, profilePic).subscribe(
-            response => {
-              console.log('Respuesta del servidor:', response);
-              // Aquí puedes manejar la respuesta del servidor
-            },
-            error => {
-              console.error('Error al realizar la solicitud:', error);
-              // Aquí puedes manejar el error
-            }
-          );
+          const auth = getAuth();
+          const user = auth.currentUser;
+          if(user){
+            this.apiService.saveUserData(username, profilePic, user.uid.toString()).subscribe(
+              response => {
+                console.log('Respuesta del servidor:', response);
+                // Aquí puedes manejar la respuesta del servidor
+              },
+              error => {
+                console.error('Error al realizar la solicitud:', error);
+                // Aquí puedes manejar el error
+              }
+            );
+          }
           // await this.verifyUserEmail();
           return updateProfile(response.user, {displayName: username});
         } catch(error) {

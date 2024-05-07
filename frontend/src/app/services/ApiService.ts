@@ -12,16 +12,14 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   // Método para realizar una solicitud POST
-  saveUserData(username: string, profilePictureURL:string): Observable<any> {
-    console.log("entró")
-    const auth = getAuth();
-    const user = auth.currentUser;
+  saveUserData(username: string, profilePictureURL:string, uid: string): Observable<any> {
     const userDTO = {
-      UID: user?.uid || '',
-      displayName: username,
+      userId: uid,
       pictureURL: profilePictureURL,
+      displayName: username,
       biography: '',
     };
+    console.log(userDTO);
 
     return this.http.post<any>(`${this.apiUrl}/createUser`, userDTO);
   }
