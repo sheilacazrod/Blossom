@@ -44,8 +44,38 @@
         <input [type]="isVisible ? 'text' : 'password'" id="transmissionKey" value='examplekey' [readonly]="true">
         <button (click)="toggleVisibility()"><i class="fa fa-eye"></i></button>
       </div>
-
       <p>No compartas la clave con nadie</p>
+      <br>
+      <div class="stream_title">
+        Título del stream: <textarea class="stream_textarea" rows="1" placeholder="Título del stream"></textarea>
+      </div>
+      <br>
+      <div class="stream_subtitle">
+        Subtítulo del stream: <textarea class="stream_textarea"  rows="1" placeholder="Subtítulo del stream:"></textarea>
+      </div>
+      <br>
+      <div class="stream_category">
+        Categorías del streaming:
+        <button (click)="addCategory('Videogames')"  class="category"> Videogames </button>
+        <button (click)="addCategory('Esports')" class="category"> Esports </button>
+        <button (click)="addCategory('Just Chatting')" class="category"> Just chatting </button>
+        <button (click)="addCategory('IRL')" class="category"> IRL </button>
+        <button (click)="addCategory('Creative')" class="category"> Creative </button>
+        <button (click)="addCategory('Music')" class="category"> Music </button>
+      </div>
+      <br>
+      <div class="selected_category">
+        <ul class="list_cat">
+          <li>Categorías seleccionadas:</li>
+          <li class="mt-2 mb-1" *ngFor="let item of selected_categories">
+            <button class="btn btn-danger " id="delete"
+                    (click)="eraseCategory(item)"> <img src="Images/close.png" class="close_btn"> <span  *ngIf="selected_categories" class="item">{{item}}</span></button>
+
+          </li>
+        </ul>
+      </div>
+      <br>
+      <app-togglestreambutton></app-togglestreambutton>
     </div>
   </div>
 </div>
