@@ -7,9 +7,7 @@ import {
   user
 } from "@angular/fire/auth";
 import {from, Observable} from "rxjs";
-import {User} from "../model/user";
-import {doc, Firestore, getDoc, setDoc, updateDoc} from "@angular/fire/firestore";
-import {HttpClient} from "@angular/common/http";
+import {UserApi} from "../model/userApi";
 import {ApiService} from "./ApiService";
 
 
@@ -19,12 +17,11 @@ import {ApiService} from "./ApiService";
 export class FirebaseAuthService {
 
   firebaseAuth = inject(Auth)
-  private _firestore = inject(Firestore);
 
   user$ = user(this.firebaseAuth);
-  currentUserSig = signal<User | null | undefined>(undefined);
+  currentUserSig = signal<UserApi | null | undefined>(undefined);
 
-  constructor(private apiService: ApiService ,private http: HttpClient) {
+  constructor(private apiService: ApiService) {
   }
   login(email: string, password: string): Observable<void>{
     const promise = signInWithEmailAndPassword(this.firebaseAuth, email, password)
@@ -49,11 +46,9 @@ export class FirebaseAuthService {
             this.apiService.saveUserData(username, profilePic, user.uid.toString()).subscribe(
               response => {
                 console.log('Respuesta del servidor:', response);
-                // Aquí puedes manejar la respuesta del servidor
               },
               error => {
                 console.error('Error al realizar la solicitud:', error);
-                // Aquí puedes manejar el error
               }
             );
           }
@@ -64,11 +59,5 @@ export class FirebaseAuthService {
         }
       });
     return from(promise)
-  }
-  async getUserData(): Promise<any> {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    //167.71.61.5:8080/getUserById
-    return this.http.post<any>('http://localhost:8080/getUserById', user?.uid);
   }
 }

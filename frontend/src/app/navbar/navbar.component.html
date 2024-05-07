@@ -11,9 +11,9 @@
       <i class="fa-solid fa-magnifying-glass textarea-icon"></i>
     </button>
   </div>
-  @if (loggedNavbarView){
+  @if (loggedNavbarView && user){
     <div class="profile">
-      <img class="profile-picture" src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture" (click)="toggleDropdown()">
+      <img class="profile-picture" src="{{user.pictureURL}}" alt="profile picture" (click)="toggleDropdown()">
     </div>
 
   } @else {
@@ -24,10 +24,11 @@
       <button class="genericButton" (click)="openDialog(1)">Registrarse</button>
     </div>
   }
+  @if(user){
     <div class="dropdown-content" [class.show-dropdown]="showDropdown">
       <div class="profile-section">
-        <img src="https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg" alt="profile picture" class="dropdown-profile-picture">
-        <p class="profile-name">Nombre de usuario</p>
+        <img src="{{user.pictureURL}}" alt="profile picture" class="dropdown-profile-picture">
+        <p class="profile-name">{{user.username}}</p>
       </div>
       <hr class="dropdown-divider">
       <a href="#"><i class="fa-solid fa-house icon-spacing"></i>Canal</a>
@@ -36,4 +37,5 @@
       <a href="/following" ><i class="fa-solid fa-star icon-spacing"></i>Suscriptores</a>
       <a (click)="onLogout()" ><i class="fa-solid fa-door-closed icon-spacing"></i>Cerrar Sesión</a>
     </div>
+  }
 </div>

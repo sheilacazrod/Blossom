@@ -1,7 +1,8 @@
 export interface User {
-  uid: string;
-  displayName: string;
-  email: string;
-  profilePicture: string;
+  userId: string;
+  username: string;
+  streamUrl: string;
+  streamPassword: string;
+  pictureURL: string;
   biography: string;
 }
