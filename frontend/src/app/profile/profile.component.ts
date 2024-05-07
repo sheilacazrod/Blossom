@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {TogglestreambuttonComponent} from "../togglestreambutton/togglestreambutton.component";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Asegúrate de importar CommonModule y FormsModule aquí
+  imports: [CommonModule, FormsModule, TogglestreambuttonComponent], // Asegúrate de importar CommonModule y FormsModule aquí
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 
 export class ProfileComponent implements OnInit {
+  selected_categories: Set<string> = new Set();
   tabSeleccionado: string = 'perfil';
   urlImagenPerfil: string = 'ruta-a-tu-imagen.jpg';
   nombrePerfil: string = 'Perfil-Name';
@@ -74,4 +76,11 @@ export class ProfileComponent implements OnInit {
     // Aquí puedes inicializar cualquier lógica que necesites cuando el componente se cargue
   }
 
+  addCategory(Category: string) {
+    this.selected_categories.add(Category);
+  }
+
+  eraseCategory(Category: string) {
+    this.selected_categories.delete(Category);
+  }
 }
