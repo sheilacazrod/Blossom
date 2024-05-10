@@ -1,0 +1,39 @@
+.boton-iniciar, .boton-detener {
+  padding: 10px 20px;
+  font-size: 15px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  min-width: 160px;
+  text-align: center;
+}
+
+.boton-iniciar {
+  background-color: #F9B4ED;
+}
+
+.boton-iniciar:hover, .boton-actualizar:hover {
+  background-color: #d0a5c0;
+}
+
+.boton-detener {
+  background-color: #FF0000;
+}
+
+.boton-detener:hover {
+  background-color: rgb(200, 0, 0);
+}
+
+.contenedor-botones {
+  display: flex;
+  align-items: center;
+}
+
+.boton-actualizar {
+  padding: 10px 10px;
+  font-size: 15px;
+  border-radius: 8px;
+  background-color: #F9B4ED;
+  margin-right: 50px;
+}
+
+
