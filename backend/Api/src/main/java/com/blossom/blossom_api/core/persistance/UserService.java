@@ -1,5 +1,7 @@
 package com.blossom.blossom_api.core.persistance;
 
+import com.blossom.blossom_api.core.system.DockerService;
+import com.blossom.blossom_api.core.system.NginxService;
 import com.blossom.blossom_api.model.dto.UserDTO;
 import com.blossom.blossom_api.model.entity.User;
 import com.google.api.core.ApiFuture;
@@ -138,7 +140,28 @@ public class UserService {
         FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(authToken);
 
         String uid = decodedToken.getUid();
+        String username = decodedToken.getName();
+        try {
+            User user = this.getUserById(uid);
 
-        return "El streaming ha comenzado para el usuario con UID: " + uid;
+            int dockerContainer = DockerService.executeCommand(username, user.getPort());
+            int nginxConfig = NginxService.executeCommand(username);
+
+            if(dockerContainer == 0 && nginxConfig == 0) {
+                return "El streaming ha comenzado para el usuario con UID: " + uid;
+            } else if (dockerContainer != 0) {
+                return "Ha habido un problema al crear el contenedor docker, código de retorno: " + dockerContainer;
+            } else if(nginxConfig != 0) {
+                return "Ha habido un problema al crear la configuración de nginx, código de retorno: " + nginxConfig;
+            } else {
+                return "Todo ha explotado, tirad de los cables y corred por vuestra vida.";
+            }
+
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

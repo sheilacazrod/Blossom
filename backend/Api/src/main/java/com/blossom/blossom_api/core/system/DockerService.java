@@ -3,13 +3,12 @@ package com.blossom.blossom_api.core.system;
 import java.io.IOException;
 
 public class DockerService {
-    public int executeCommand(String username, String port) {
+    public static int executeCommand(String username, int port) {
         try {
-            ProcessBuilder processBuilder = new ProcessBuilder("/app/Blossom/docker-dispatcher.sh", username, port);
+            ProcessBuilder processBuilder = new ProcessBuilder("/app/Blossom/docker-dispatcher.sh", username, String.valueOf(port));
             Process process = processBuilder.start();
 
-            int exitCode = process.waitFor();
-            return exitCode;
+            return process.waitFor();
         } catch (IOException e) {
             System.err.println("IO Error in docker-dispatcher " + e.getMessage());
             return -1;

@@ -11,9 +11,11 @@ public class User {
     private String streamPassword;
     private String pictureURL;
     private String biography;
+    private int port;
     private List<String> followed;
 
     public String generateStreamUrl(int port) {
+        this.port = port;
         return "rtmp://167.71.61.5:" + port + "/live";
     }
 

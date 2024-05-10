@@ -10,5 +10,6 @@ public class UserDTO {
     private String userId;
     private String pictureURL;
     private String biography;
+    private String port;
     private List<String> followed;
 }
