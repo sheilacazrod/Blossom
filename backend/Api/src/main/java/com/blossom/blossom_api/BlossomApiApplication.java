@@ -5,13 +5,13 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Objects;
-import java.io.InputStream;
-
+@EnableWebMvc
 @SpringBootApplication
 public class BlossomApiApplication {
 
@@ -19,21 +19,14 @@ public class BlossomApiApplication {
 
         ClassLoader classLoader = BlossomApiApplication.class.getClassLoader();
 
-        //File file = new File(Objects.requireNonNull(classLoader.getResource("firebase.json")).getFile());
-        //FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
-	
-	InputStream inputStream = classLoader.getResourceAsStream("firebase.json");
-        if (inputStream == null) {
-            throw new IllegalStateException("El archivo firebase.json no se encontró en el classpath");
-        }
-
+        File file = new File(Objects.requireNonNull(classLoader.getResource("firebase.json")).getFile());
+        FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
         FirebaseOptions options = new FirebaseOptions.Builder()
-                .setCredentials(GoogleCredentials.fromStream(inputStream))
+                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                 .build();
 
         FirebaseApp.initializeApp(options);
 
         SpringApplication.run(BlossomApiApplication.class, args);
     }
-
 }
