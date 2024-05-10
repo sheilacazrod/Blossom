@@ -55,7 +55,7 @@ export class StreamingPageComponent{
     if(this.user){
       try {
         const resultado = await this.apiService.addFollow(this.user.userId);
-        console.log('Resultado de addFollow:', resultado);
+        window.location.reload();
       } catch (error) {
         console.error('Error al llamar a addFollow:', error);
       }

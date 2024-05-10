@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {RouterLink} from "@angular/router";
+import {User} from "../model/user";
 
 @Component({
   selector: 'app-streamer-sidebar',
@@ -11,5 +12,5 @@ import {RouterLink} from "@angular/router";
   styleUrl: './streamer-sidebar.component.css'
 })
 export class StreamerSidebarComponent {
-
+  @Input() user!: User;
 }

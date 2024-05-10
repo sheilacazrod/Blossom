@@ -76,8 +76,6 @@ export class ApiService {
   async addFollow(followedId: string){
     const auth = getAuth();
     const user = auth.currentUser;
-    const params = { userId: user?.uid, followedId: followedId };
-    console.log(params);
     try {
       const response = await this.http.put<any>(`${this.apiUrl}/addFollowed?userId=${user?.uid}&followedId=${followedId}`, {}).toPromise();
       console.log("Respuesta de añadir follow:", response);
@@ -85,6 +83,12 @@ export class ApiService {
       console.error("Error al añadir follow:", error);
       throw error;
     }
+  }
+
+  async getFollowers(): Promise<any> {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    return this.http.get<any>(`${this.apiUrl}/getFollowed?userId=${user?.uid}`) as Observable<User[]>
   }
 
 }
