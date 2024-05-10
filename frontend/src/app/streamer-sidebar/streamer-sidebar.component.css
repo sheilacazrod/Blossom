@@ -4,10 +4,11 @@
 }
 .profile-picture {
   height: 4vh;
+  aspect-ratio: 1/1;
+  object-fit: cover;
   border-radius: 50%;
   border: 1px solid #753170;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
   margin-bottom: auto;
 }
 

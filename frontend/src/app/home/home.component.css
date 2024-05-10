@@ -1,4 +1,6 @@
 body{
+  width: 85vw;
+  padding-left: 3%;
 }
 .carousel-container{
   display: flex;
@@ -19,10 +21,10 @@ body{
 }
 
 .additional-videos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 2%;
+  padding-top: 3%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
 }
 
 .video {

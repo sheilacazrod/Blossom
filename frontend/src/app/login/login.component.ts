@@ -27,7 +27,7 @@ export class LoginComponent {
     this.authService.login(rawForm.loginMail, rawForm.loginPwd)
       .subscribe({
         next: () =>{
-          this.dialogRef.close();
+          window.location.reload()
         },
         error: (error) => {
           console.log(error.code);

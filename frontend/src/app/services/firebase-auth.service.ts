@@ -12,6 +12,7 @@ import {from, Observable} from "rxjs";
 import {UserApi} from "../model/userApi";
 import {ApiService} from "./ApiService";
 import {doc} from "@angular/fire/firestore";
+import {User} from "../model/user";
 
 
 @Injectable({
@@ -64,26 +65,42 @@ export class FirebaseAuthService {
     return from(promise)
   }
 
-  async uploadProfilePicture(profilePicture: File): Promise<boolean> {
-    const auth = getAuth();
-    const user = auth.currentUser;
+  // async uploadProfilePicture(profilePicture: File): Promise<boolean> {
+  //   const auth = getAuth();
+  //   const user = auth.currentUser;
+  //
+  //   if(user) {
+  //     const storage = getStorage();
+  //     const storagePath = user.uid + '/' + 'profilePicture.jpg';
+  //     const storageRef = ref(storage, storagePath);
+  //
+  //     try {
+  //       await uploadBytes(storageRef, profilePicture);
+  //       await this.apiService.updateUserData(user.displayName,await getDownloadURL(storageRef),user.uid)
+  //       console.log("Imagen cargada con éxito!");
+  //       return true;
+  //     } catch (error) {
+  //       console.error("Ha habido un error al cargar la imagen.");
+  //       return false;
+  //     }
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
-    if(user) {
+  async uploadProfilePicture(user: User, profilePicture: File): Promise<boolean> {
       const storage = getStorage();
-      const storagePath = user.uid + '/' + 'profilePicture.jpg';
+      const storagePath = user.userId + '/' + 'profilePicture.jpg';
       const storageRef = ref(storage, storagePath);
 
       try {
         await uploadBytes(storageRef, profilePicture);
-        await this.apiService.updateUserData(user.displayName,await getDownloadURL(storageRef),user.uid)
+        await this.apiService.updatePicture(user, await getDownloadURL(storageRef))
         console.log("Imagen cargada con éxito!");
         return true;
       } catch (error) {
         console.error("Ha habido un error al cargar la imagen.");
         return false;
       }
-    } else {
-      return false;
-    }
   }
 }

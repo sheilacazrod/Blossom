@@ -1,28 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from "rxjs";
+import {User} from "../model/user";
+import {ApiService} from "../services/ApiService";
+import {StreamPreviewComponent} from "../streamPreview/stream-preview.component";
 
 @Component({
   selector: 'app-following',
   standalone: true,
-  imports: [],
+  imports: [
+    StreamPreviewComponent
+  ],
   templateUrl: './following.component.html',
   styleUrls: ['./following.component.css']
 })
 export class FollowingComponent implements OnInit {
+  users: User[] = [];
 
-  imagenDirecto1 = 'https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg';
-  imagenDirecto2 = 'https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg';
-  imagenDirecto3 = 'https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg';
-  imagenDirecto4 = 'https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg';
-
-
-  imagenRecomendado1 = 'https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg';
-  imagenRecomendado2 = 'https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg';
-  imagenRecomendado3 = 'https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg';
-  imagenRecomendado4 = 'https://ih1.redbubble.net/image.3092348941.4978/st,small,845x845-pad,1000x1000,f8f8f8.jpg';
-
-  constructor() {
+  constructor(private  apiService: ApiService) {
   }
 
   ngOnInit() {
+    this.getAllUsers();
   }
+  getAllUsers() {
+    this.apiService.getAllUsers()
+      .then((booksObservable: Observable<User[]>) => {
+        booksObservable.subscribe((users: User[]) => {
+          this.users = users;
+        });
+      })
+      .catch((error) => {
+        console.error("Error al obtener los usuarios:", error);
+      });
+  }
+
 }
