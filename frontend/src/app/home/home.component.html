@@ -7,7 +7,7 @@
   <!-- Contenedor para los videos adicionales -->
   <div class="additional-videos">
     @for(streamers of users; track streamers;){
-      <img routerLink="/streaming" src="{{streamers.pictureURL}}" class="video">
+      <app-streamPreview [user] = "streamers"></app-streamPreview>
     }
   </div>
 </body>

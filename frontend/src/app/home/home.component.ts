@@ -5,6 +5,7 @@ import {RouterLink} from "@angular/router";
 import {ApiService} from "../services/ApiService";
 import {User} from "../model/user";
 import {Observable} from "rxjs";
+import {StreamPreviewComponent} from "../streamPreview/stream-preview.component";
 
 
 @Component({
@@ -12,7 +13,8 @@ import {Observable} from "rxjs";
   standalone: true,
   imports: [
     NgForOf,
-    RouterLink
+    RouterLink,
+    StreamPreviewComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
