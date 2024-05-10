@@ -45,13 +45,13 @@ public class UserController {
         return userService.getFollowed(userId);
     }
 
-    @GetMapping("/addFollowed")
+    @PutMapping("/addFollowed")
     public List<User> addFollowed(@RequestParam String userId, @RequestParam String followedId) throws ExecutionException, InterruptedException {
         System.out.println("userId= " + userId + "\nfollowedId= " + followedId);
         return  userService.addFollowed(userId, followedId);
     }
 
-    @GetMapping("/deleteFollowed")
+    @PutMapping("/deleteFollowed")
     public List<User> deleteFollowed(@RequestParam String userId, @RequestParam String followedId) throws ExecutionException, InterruptedException {
        return userService.deleteFollowed(userId, followedId);
     }

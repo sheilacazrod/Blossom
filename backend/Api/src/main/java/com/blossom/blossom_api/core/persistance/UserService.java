@@ -112,16 +112,16 @@ public class UserService {
         DocumentReference docRef = dbFirestore.collection("users").document(userId);
         ApiFuture<DocumentSnapshot> future = docRef.get();
         DocumentSnapshot document = future.get();
-
         if (document.exists()) {
             User user = document.toObject(User.class);
-            List<String> followedIds = new ArrayList<>(user.getFollowed());
+            List<String> followedIds = user.getFollowed();
+            if (followedIds == null) {
+                followedIds = new ArrayList<>();
+            }
             followedIds.add(followedId);
-
             Map<String, Object> updates = new HashMap<>();
             updates.put("followed", followedIds);
-            docRef.set(updates, SetOptions.merge());
-
+            docRef.set(updates, SetOptions.merge()).get();
             return getFollowed(userId);
         } else {
             throw new IllegalArgumentException("El usuario con ID " + userId + " no existe en la base de datos.");
