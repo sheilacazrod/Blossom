@@ -22,7 +22,6 @@ public class UserController {
 
     @PostMapping("/createUser")
     public User createCRUD(@RequestBody UserDTO user) {
-        System.out.println(user);
         User userEntity = UserMapper.toUser(user);
         return userService.createUser(userEntity);
     }
@@ -30,6 +29,10 @@ public class UserController {
     @GetMapping("/getUserById")
     public User getUserById(@RequestParam String id) throws Exception {
         return userService.getUserById(id);
+    }
+    @GetMapping("/getUserByUsername")
+    public User getUserByUsername(@RequestParam String username) throws Exception {
+        return userService.getUserByUsername(username);
     }
 
     @GetMapping("/getAllUsers")
@@ -44,6 +47,7 @@ public class UserController {
 
     @GetMapping("/addFollowed")
     public List<User> addFollowed(@RequestParam String userId, @RequestParam String followedId) throws ExecutionException, InterruptedException {
+        System.out.println("userId= " + userId + "\nfollowedId= " + followedId);
         return  userService.addFollowed(userId, followedId);
     }
 

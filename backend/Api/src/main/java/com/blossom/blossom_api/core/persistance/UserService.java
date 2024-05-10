@@ -1,6 +1,7 @@
 package com.blossom.blossom_api.core.persistance;
 
 import com.blossom.blossom_api.model.dto.UserDTO;
+import com.blossom.blossom_api.model.entity.Stream;
 import com.blossom.blossom_api.model.entity.User;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
@@ -21,6 +22,8 @@ public class UserService {
     public User createUser(User user) {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         dbFirestore.collection("users").document(user.getUserId()).set(user);
+        Stream stream = new Stream(user.getUserId(), "Mi Stream", new String[]{});
+        dbFirestore.collection("streams").document(user.getUserId()).set(stream);
         return user;
     }
 
@@ -35,6 +38,19 @@ public class UserService {
             return user;
         }
         return null;
+    }
+
+    public User getUserByUsername(String username) throws ExecutionException, InterruptedException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        Query query = dbFirestore.collection("users").whereEqualTo("username", username).limit(1);
+        ApiFuture<QuerySnapshot> querySnapshot = query.get();
+        List<QueryDocumentSnapshot> documents = querySnapshot.get().getDocuments();
+        if (!documents.isEmpty()) {
+            DocumentSnapshot documentSnapshot = documents.get(0);
+            return documentSnapshot.toObject(User.class);
+        } else {
+            return null;
+        }
     }
 
     public User updateUser(UserDTO user) throws ExecutionException, InterruptedException {
