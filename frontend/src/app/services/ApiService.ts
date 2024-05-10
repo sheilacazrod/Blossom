@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {getAuth} from "@angular/fire/auth";
-import {UserApi} from "../model/userApi";
 import {User} from "../model/user";
 
 @Injectable({
@@ -74,21 +73,10 @@ export class ApiService {
     }
   }
 
-  // async updatePicture(username: string | null, profilePictureURL: string, uid: string) {
-  //   const userDTO = {
-  //     userId: uid,
-  //     pictureURL: profilePictureURL,
-  //     displayName: username,
-  //     biography: ''
-  //   };
-  //
-  //   try {
-  //     const response = await this.http.put<any>(`${this.apiUrl}/updateUser`, userDTO).toPromise();
-  //     console.log("Respuesta de la actualización del usuario:", response);
-  //   } catch (error) {
-  //     console.error("Error al actualizar el usuario:", error);
-  //     throw error;
-  //   }
-  // }
+  async addFollow(followedId: string): Promise<any>{
+    const auth = getAuth();
+    const user = auth.currentUser;
+    return this.http.get<any>(`${this.apiUrl}/addFollowed?userId=${user?.uid}&followedId=${followedId}`).toPromise();
+  }
 
 }

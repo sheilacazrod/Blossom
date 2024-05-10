@@ -24,9 +24,6 @@ export class StreamingPageComponent{
   src!: SafeResourceUrl;
   user: User | null = null;
 
-  srcAndrew = "http://167.71.61.5/andrew"
-  srcMica = "http://167.71.61.5/mica"
-  srcSheila = "http://167.71.61.5/sheila"
   constructor(private route: ActivatedRoute,
               private apiService: ApiService,
               private sanitizer: DomSanitizer) { }
@@ -54,24 +51,14 @@ export class StreamingPageComponent{
     }
   }
 
-  changeSrc(a: number) {
-
-    const playerIframe = document.getElementById('player') as HTMLIFrameElement;
-    if (a==1){
-      if (playerIframe) {
-        playerIframe.src = this.srcAndrew;
+  async follow(){
+    if(this.user){
+      try {
+        const resultado = await this.apiService.addFollow(this.user.userId);
+        console.log('Resultado de addFollow:', resultado);
+      } catch (error) {
+        console.error('Error al llamar a addFollow:', error);
       }
     }
-    if (a==2){
-      if (playerIframe) {
-        playerIframe.src = this.srcMica;
-      }
-    }
-    if (a==3){
-      if (playerIframe) {
-        playerIframe.src = this.srcSheila;
-      }
-    }
-
   }
 }

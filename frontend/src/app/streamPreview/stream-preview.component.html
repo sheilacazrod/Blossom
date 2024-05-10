@@ -1,1 +1,6 @@
-<img src="{{user.pictureURL}}" routerLink="/user/{{user.username}}" >
+<div class="streamPreview" routerLink="/user/{{user.username}}">
+  <img class="streamCover" src="{{user.pictureURL}}" alt="${user.username}">
+  <div class="streamInfo">
+    <b class="streamTitle">{{user.username}}</b>
+  </div>
+</div>

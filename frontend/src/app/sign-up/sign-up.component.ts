@@ -31,7 +31,7 @@ export class SignUpComponent {
       .subscribe({
         next: () =>{
           console.log("Usuario Registrado");
-          this.dialogRef.close();
+          window.location.reload()
         },
         error: (error) => {
           console.log(error.code);
