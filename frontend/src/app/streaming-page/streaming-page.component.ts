@@ -4,6 +4,8 @@ import {SideBarComponent} from "../side-bar/side-bar.component";
 import {VgCoreModule} from "@videogular/ngx-videogular/core";
 import {SidenavComponent} from "../sidenav/sidenav.component";
 import {ActivatedRoute} from "@angular/router";
+import {User} from "../model/user";
+import {ApiService} from "../services/ApiService";
 
 @Component({
   selector: 'app-streaming-page',
@@ -18,22 +20,28 @@ import {ActivatedRoute} from "@angular/router";
   styleUrl: './streaming-page.component.css'
 })
 export class StreamingPageComponent{
-  usuario: string = "";
   src: string = "http://167.71.61.5/";
+  user: User | null = null;
 
   srcAndrew = "http://167.71.61.5/andrew"
   srcMica = "http://167.71.61.5/mica"
   srcSheila = "http://167.71.61.5/sheila"
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+              private apiService: ApiService) { }
 
-  // Falta conectar con backend
-  // ngOnInit(): void {
-  //   this.route.params.subscribe(params => {
-  //     this.usuario = params['usuario'];
-  //     this.src = this.src + this.usuario;
-  //     console.log('Usuario:', this.usuario);
-  //   });
-  // }
+  async ngOnInit(): Promise<void> {
+    this.route.params.subscribe(params => {
+          this.getUserData(params['usuario']);
+        });
+  }
+
+  async getUserData(name: string): Promise<void> {
+    try {
+      this.user = await this.apiService.getUserByName(name);
+    } catch (error) {
+      console.error('Error al obtener datos de usuario:', error);
+    }
+  }
 
   changeSrc(a: number) {
 

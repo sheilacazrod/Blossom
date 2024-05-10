@@ -13,6 +13,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'categories', component: CategoriesComponent},
   { path: 'streaming', component: StreamingPageComponent },
+  { path: 'user/:usuario', component: StreamingPageComponent },
 
 ];
 

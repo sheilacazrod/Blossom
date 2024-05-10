@@ -32,6 +32,10 @@ export class ApiService {
     return this.http.get<any>(`${this.apiUrl}/getUserById?id=${user?.uid}`).toPromise();
   }
 
+  async getUserByName(name: string): Promise<any> {
+    return this.http.get<any>(`${this.apiUrl}/getUserByUsername?username=${name}`).toPromise();
+  }
+
   async getAllUsers(){
     return this.http.get<any>(`${this.apiUrl}/getAllUsers`) as Observable<User[]>
   }
