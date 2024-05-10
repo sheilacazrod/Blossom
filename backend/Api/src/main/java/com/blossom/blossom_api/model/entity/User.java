@@ -1,4 +1,4 @@
-package com.blossom.blossom_api;
+package com.blossom.blossom_api.model.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,7 @@ public class User {
     private String streamPassword;
 
     public String generateStreamUrl(int port) {
-        return "rtmp://167.71.61.5:" + port;
+        return "rtmp://167.71.61.5:" + port + "/live";
     }
 
     public String generateStreamPassword() {

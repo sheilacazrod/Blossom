@@ -1,5 +1,7 @@
-package com.blossom.blossom_api;
+package com.blossom.blossom_api.core.persistance;
 
+import com.blossom.blossom_api.core.persistance.CRUDService;
+import com.blossom.blossom_api.model.entity.User;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;

@@ -1,5 +1,7 @@
-package com.blossom.blossom_api;
+package com.blossom.blossom_api.core.persistance;
 
+import com.blossom.blossom_api.PortManager;
+import com.blossom.blossom_api.model.entity.User;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.cloud.FirestoreClient;

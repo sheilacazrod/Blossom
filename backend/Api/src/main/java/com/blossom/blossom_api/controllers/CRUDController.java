@@ -1,5 +1,7 @@
-package com.blossom.blossom_api;
+package com.blossom.blossom_api.controllers;
 
+import com.blossom.blossom_api.core.persistance.CRUDService;
+import com.blossom.blossom_api.model.entity.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import org.springframework.http.ResponseEntity;
