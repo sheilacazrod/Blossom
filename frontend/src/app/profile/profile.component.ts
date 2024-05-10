@@ -91,13 +91,20 @@ export class ProfileComponent implements OnInit {
   submitUserData() {
     if(this.user){
       if(this.profilePicture != null) {
-        this.authService.uploadProfilePicture(<File> this.profilePicture).then(
+        this.authService.uploadProfilePicture(this.user,<File> this.profilePicture).then(
           (response) => {
             if(response) {
               console.log("La imagen se ha cargado.");
             } else {
               console.log("Ha habido un error al cargar la imagen.");
             }
+            this.reloadPage()
+          }
+        );
+      }
+      else{
+        this.apiService.updateUserData(this.user).then(
+          () => {
             this.reloadPage()
           }
         );

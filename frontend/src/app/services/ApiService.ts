@@ -40,12 +40,12 @@ export class ApiService {
     return this.http.get<any>(`${this.apiUrl}/getAllUsers`) as Observable<User[]>
   }
 
-  async updateUserData(username: string | null, profilePictureURL: string, uid: string) {
+  async updatePicture(user: User, profilePictureURL: string) {
     const userDTO = {
-      userId: uid,
+      userId: user.userId,
       pictureURL: profilePictureURL,
-      displayName: username,
-      biography: ''
+      displayName: user.username,
+      biography: user.biography
     };
 
     try {
@@ -56,5 +56,39 @@ export class ApiService {
       throw error;
     }
   }
+
+  async updateUserData(user: User) {
+    const userDTO = {
+      userId: user.userId,
+      pictureURL: user.pictureURL,
+      displayName: user.username,
+      biography: user.biography
+    };
+
+    try {
+      const response = await this.http.put<any>(`${this.apiUrl}/updateUser`, userDTO).toPromise();
+      console.log("Respuesta de la actualización del usuario:", response);
+    } catch (error) {
+      console.error("Error al actualizar el usuario:", error);
+      throw error;
+    }
+  }
+
+  // async updatePicture(username: string | null, profilePictureURL: string, uid: string) {
+  //   const userDTO = {
+  //     userId: uid,
+  //     pictureURL: profilePictureURL,
+  //     displayName: username,
+  //     biography: ''
+  //   };
+  //
+  //   try {
+  //     const response = await this.http.put<any>(`${this.apiUrl}/updateUser`, userDTO).toPromise();
+  //     console.log("Respuesta de la actualización del usuario:", response);
+  //   } catch (error) {
+  //     console.error("Error al actualizar el usuario:", error);
+  //     throw error;
+  //   }
+  // }
 
 }

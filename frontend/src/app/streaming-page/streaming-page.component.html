@@ -1,7 +1,7 @@
 @if(user){
   <main class="streamer-main">
 
-    <iframe id="player" src="{{user.streamUrl}}" scrolling="no" allowfullscreen type="video/mp4"></iframe>
+    <iframe id="player" [src]="getVideoUrl()" scrolling="no" allowfullscreen type="video/mp4"></iframe>
     <section class="streamer">
       <img class="profile-picture" src="{{user.pictureURL}}" alt="profile picture">
       <div class="streamer-info">
@@ -16,6 +16,7 @@
         <button class="genericButton" (click)="changeSrc(3)">Sheila</button>
       </div>
     </section>
+    <p class="biography">{{user.biography}}</p>
   </main>
 }
 
