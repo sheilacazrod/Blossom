@@ -1,15 +1,17 @@
 package com.blossom.blossom_api.model.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import java.util.List;
 
-@Getter
-@Setter
+@Data
 public class User {
-    private String Uid;
+    private String userId;
     private String username;
     private String streamUrl;
     private String streamPassword;
+    private String pictureURL;
+    private String biography;
+    private List<String> followed;
 
     public String generateStreamUrl(int port) {
         return "rtmp://167.71.61.5:" + port + "/live";
