@@ -1,4 +1,6 @@
 import {inject, Injectable, signal} from '@angular/core';
+import {getDownloadURL, getStorage, ref, uploadBytes} from '@angular/fire/storage';
+
 import {
   Auth,
   createUserWithEmailAndPassword, getAuth,
@@ -9,6 +11,7 @@ import {
 import {from, Observable} from "rxjs";
 import {UserApi} from "../model/userApi";
 import {ApiService} from "./ApiService";
+import {doc} from "@angular/fire/firestore";
 
 
 @Injectable({
@@ -43,7 +46,7 @@ export class FirebaseAuthService {
           const auth = getAuth();
           const user = auth.currentUser;
           if(user){
-            this.apiService.saveUserData(username, profilePic, user.uid.toString()).subscribe(
+            this.apiService.createUser(username, profilePic, user.uid.toString()).subscribe(
               response => {
                 console.log('Respuesta del servidor:', response);
               },
@@ -59,5 +62,28 @@ export class FirebaseAuthService {
         }
       });
     return from(promise)
+  }
+
+  async uploadProfilePicture(profilePicture: File): Promise<boolean> {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if(user) {
+      const storage = getStorage();
+      const storagePath = user.uid + '/' + 'profilePicture.jpg';
+      const storageRef = ref(storage, storagePath);
+
+      try {
+        await uploadBytes(storageRef, profilePicture);
+        await this.apiService.updateUserData(user.displayName,await getDownloadURL(storageRef),user.uid)
+        console.log("Imagen cargada con éxito!");
+        return true;
+      } catch (error) {
+        console.error("Ha habido un error al cargar la imagen.");
+        return false;
+      }
+    } else {
+      return false;
+    }
   }
 }

@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import {NgForOf} from "@angular/common";
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import {RouterLink} from "@angular/router";
+import {ApiService} from "../services/ApiService";
+import {User} from "../model/user";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -15,7 +18,8 @@ import {RouterLink} from "@angular/router";
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor(private sanitizer: DomSanitizer) {}
+  users: User[] = [];
+  constructor(private sanitizer: DomSanitizer, private  apiService: ApiService) {}
   videos = [
     'https://www.youtube.com/embed/BwD6WTEhftQ',
     'https://www.youtube.com/embed/oKVYm8mIUdo',
@@ -32,6 +36,24 @@ export class HomeComponent {
   ];
 
   currentIndex = 0;
+
+
+  ngOnInit(): void {
+    this.getAllUsers();
+  }
+
+  getAllUsers() {
+    this.apiService.getAllUsers()
+      .then((booksObservable: Observable<User[]>) => {
+        booksObservable.subscribe((users: User[]) => {
+          this.users = users;
+          console.log(this.users);
+        });
+      })
+      .catch((error) => {
+        console.error("Error al obtener los usuarios:", error);
+      });
+  }
 
   next() {
     this.currentIndex = (this.currentIndex + 1) % this.videos.length;

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {getAuth} from "@angular/fire/auth";
 import {UserApi} from "../model/userApi";
+import {User} from "../model/user";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   // Método para realizar una solicitud POST
-  saveUserData(username: string, profilePictureURL:string, uid: string): Observable<any> {
+  createUser(username: string, profilePictureURL:string, uid: string): Observable<any> {
     const userDTO = {
       userId: uid,
       pictureURL: profilePictureURL,
@@ -28,8 +29,28 @@ export class ApiService {
     const auth = getAuth();
     const user = auth.currentUser;
 
-    //167.71.61.5:8080/getUserById
     return this.http.get<any>(`${this.apiUrl}/getUserById?id=${user?.uid}`).toPromise();
+  }
+
+  async getAllUsers(){
+    return this.http.get<any>(`${this.apiUrl}/getAllUsers`) as Observable<User[]>
+  }
+
+  async updateUserData(username: string | null, profilePictureURL: string, uid: string) {
+    const userDTO = {
+      userId: uid,
+      pictureURL: profilePictureURL,
+      displayName: username,
+      biography: ''
+    };
+
+    try {
+      const response = await this.http.put<any>(`${this.apiUrl}/updateUser`, userDTO).toPromise();
+      console.log("Respuesta de la actualización del usuario:", response);
+    } catch (error) {
+      console.error("Error al actualizar el usuario:", error);
+      throw error;
+    }
   }
 
 }

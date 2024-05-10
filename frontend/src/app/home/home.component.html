@@ -6,8 +6,8 @@
   </div>
   <!-- Contenedor para los videos adicionales -->
   <div class="additional-videos">
-    @for(streamers of streamers; track streamers;){
-      <img routerLink="/streaming" src="{{streamers}}" class="video">
+    @for(streamers of users; track streamers;){
+      <img routerLink="/streaming" src="{{streamers.pictureURL}}" class="video">
     }
   </div>
 </body>
