@@ -9,7 +9,11 @@
         <p class="title">Título Stream</p>
       </div>
       <div class="buttons">
-        <button class="genericButton" (click)="follow()">Seguir</button>
+        @if(isfollowing){
+          <button class="genericButton2" (click)="unfollow()">Dejar de Seguir</button>
+        } @else {
+          <button class="genericButton" (click)="follow()">Seguir</button>
+        }
       </div>
     </section>
     <p class="biography">{{user.biography}}</p>

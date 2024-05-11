@@ -76,3 +76,27 @@ iframe {
   transform: scale(0.9); /* Reduce el tamaño del botón al hacer clic */
 }
 
+
+.genericButton2{
+  padding: 5px ;
+  margin: 5px;
+  color: #d0a5c0;
+  background-color: white;
+  font-weight: bold;
+  border: 2px solid #d0a5c0; /* Grosor y color del borde */
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.genericButton2:hover{
+  color: red;
+  background-color: white;
+  border: 2px solid red; /* Grosor y color del borde */
+}
+
+.genericButton:active {
+  transform: scale(0.9); /* Reduce el tamaño del botón al hacer clic */
+}
+

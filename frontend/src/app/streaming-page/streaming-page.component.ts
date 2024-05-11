@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {StreamerSidebarComponent} from "../streamer-sidebar/streamer-sidebar.component";
 import {SideBarComponent} from "../side-bar/side-bar.component";
 import {VgCoreModule} from "@videogular/ngx-videogular/core";
@@ -7,6 +7,8 @@ import {ActivatedRoute} from "@angular/router";
 import {User} from "../model/user";
 import {ApiService} from "../services/ApiService";
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import {Observable} from "rxjs";
+import {FirebaseAuthService} from "../services/firebase-auth.service";
 
 @Component({
   selector: 'app-streaming-page',
@@ -23,6 +25,10 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class StreamingPageComponent{
   src!: SafeResourceUrl;
   user: User | null = null;
+  isfollowing: boolean = false;
+  follows: User[] = [];
+
+  authService = inject(FirebaseAuthService)
 
   constructor(private route: ActivatedRoute,
               private apiService: ApiService,
@@ -32,6 +38,9 @@ export class StreamingPageComponent{
     this.route.params.subscribe(params => {
           this.getUserData(params['usuario']);
         });
+    this.authService.user$.subscribe((user) =>{
+      this.getFollowers();
+    });
   }
 
   getVideoUrl(){
@@ -60,5 +69,41 @@ export class StreamingPageComponent{
         console.error('Error al llamar a addFollow:', error);
       }
     }
+  }
+
+  async unfollow(){
+    if(this.user){
+      try {
+        const resultado = await this.apiService.deleteFollow(this.user.userId);
+        window.location.reload();
+      } catch (error) {
+        console.error('Error al llamar a addFollow:', error);
+      }
+    }
+  }
+
+
+  getFollowers(){
+    this.apiService.getFollowers()
+      .then((booksObservable: Observable<User[]>) => {
+        booksObservable.subscribe((users: User[]) => {
+          this.follows = users;
+          if(this.user){
+            this.isfollowing= this.isUserFollowed(this.user?.userId)
+          }
+        });
+      })
+      .catch((error) => {
+        console.error("Error al obtener los seguidores:", error);
+      });
+  }
+
+  isUserFollowed(userIdToCheck: string): boolean {
+    for (const user of this.follows) {
+      if (user.userId === userIdToCheck) {
+        return true;
+      }
+    }
+    return false;
   }
 }

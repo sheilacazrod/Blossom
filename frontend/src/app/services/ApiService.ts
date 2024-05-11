@@ -85,6 +85,18 @@ export class ApiService {
     }
   }
 
+  async deleteFollow(followedId: string){
+    const auth = getAuth();
+    const user = auth.currentUser;
+    try {
+      const response = await this.http.put<any>(`${this.apiUrl}/deleteFollowed?userId=${user?.uid}&followedId=${followedId}`, {}).toPromise();
+      console.log("Respuesta de eliminar follow:", response);
+    } catch (error) {
+      console.error("Error al eliminar follow:", error);
+      throw error;
+    }
+  }
+
   async getFollowers(): Promise<any> {
     const auth = getAuth();
     const user = auth.currentUser;
