@@ -3,12 +3,12 @@
   <section class="main-page">
     <article class="sidebar">
       @if (extend){
-        <app-side-bar (extended)="toogleSidebar($event)" ></app-side-bar>
+        <app-side-bar (extended)="toogleSidebar($event)"  [follows] = "follows"></app-side-bar>
       } @else {
-        <app-sidenav (extended)="toogleSidebar($event)" ></app-sidenav>
+        <app-sidenav (extended)="toogleSidebar($event)" [follows] = "follows" ></app-sidenav>
       }
     </article>
-    <router-outlet></router-outlet>
+    <router-outlet ></router-outlet>
   </section>
 
 

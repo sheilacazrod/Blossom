@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {StreamingPageComponent} from "./streaming-page/streaming-page.component";
 import {NavbarComponent} from "./navbar/navbar.component";
@@ -13,6 +13,9 @@ import { FormsModule } from '@angular/forms';
 import {SideBarComponent} from "./side-bar/side-bar.component";
 import {SidenavComponent} from "./sidenav/sidenav.component";
 import {FirebaseAuthService} from "./services/firebase-auth.service";
+import {User} from "./model/user";
+import {ApiService} from "./services/ApiService";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -35,14 +38,13 @@ import {FirebaseAuthService} from "./services/firebase-auth.service";
 })
 export class AppComponent {
   title = 'Blossom';
+  follows: User[] = [];
 
   extend= false;
 
-  toogleSidebar(data: boolean){
-    this.extend=data;
-  }
-
   authService = inject(FirebaseAuthService)
+
+  constructor(private  apiService: ApiService) {}
   ngOnInit(): void{
     this.authService.user$.subscribe((user) =>{
       if(user){
@@ -51,10 +53,29 @@ export class AppComponent {
           email: user.email!,
           displayName: user.displayName!,
         });
+        this.getFollowers();
       } else {
         this.authService.currentUserSig.set(null)
       }
       console.log(this.authService.currentUserSig());
     });
   }
+
+  toogleSidebar(data: boolean){
+    this.extend=data;
+  }
+
+  getFollowers(){
+    this.apiService.getFollowers()
+      .then((booksObservable: Observable<User[]>) => {
+        booksObservable.subscribe((users: User[]) => {
+          this.follows = users;
+          console.log(this.follows)
+        });
+      })
+      .catch((error) => {
+        console.error("Error al obtener los seguidores:", error);
+      });
+  }
+
 }

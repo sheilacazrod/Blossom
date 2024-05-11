@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {StreamerSidebarComponent} from "../streamer-sidebar/streamer-sidebar.component";
 import {User} from "../model/user";
 import {Observable} from "rxjs";
@@ -17,28 +17,9 @@ import {StreamPreviewComponent} from "../streamPreview/stream-preview.component"
 })
 export class SideBarComponent {
   @Output() extended =new EventEmitter<boolean>();
-  follows: User[] = [];
-
-  constructor(private  apiService: ApiService) {}
-
-  ngOnInit(): void {
-    this.getFollowers();
-  }
+  @Input() follows: User[] = [];
 
   Toggle() {
     this.extended.emit(false);
-  }
-
-  getFollowers(){
-    this.apiService.getFollowers()
-      .then((booksObservable: Observable<User[]>) => {
-        booksObservable.subscribe((users: User[]) => {
-          this.follows = users;
-          console.log(this.follows)
-        });
-      })
-      .catch((error) => {
-        console.error("Error al obtener los seguidores:", error);
-      });
   }
 }

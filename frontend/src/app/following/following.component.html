@@ -1,8 +1,11 @@
 <div class="siguiendo-container">
   <h1>Siguiendo</h1>
   <div class="seccion-directos">
-    <h2>Canales que sigues en directo</h2>
+    <h2>Canales que sigues</h2>
     <div class="directos-container">
+      @for(follow of follows; track follow;){
+        <app-streamPreview [user] = "follow"></app-streamPreview>
+      }
     </div>
   </div>
   <div class="seccion-recomendados">
