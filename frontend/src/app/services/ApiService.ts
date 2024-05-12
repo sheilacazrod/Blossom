@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {getAuth} from "@angular/fire/auth";
 import {User} from "../model/user";
+import {Stream} from "../model/stream";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,6 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  // Método para realizar una solicitud POST
   createUser(username: string, profilePictureURL:string, uid: string): Observable<any> {
     const userDTO = {
       userId: uid,
@@ -29,6 +29,12 @@ export class ApiService {
     const user = auth.currentUser;
 
     return this.http.get<any>(`${this.apiUrl}/getUserById?id=${user?.uid}`).toPromise();
+  }
+
+  async getStreamData(): Promise<any> {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    return this.http.get<any>(`${this.apiUrl}/getStreamById?id=${user?.uid}`).toPromise();
   }
 
   async getUserByName(name: string): Promise<any> {
@@ -66,6 +72,23 @@ export class ApiService {
 
     try {
       const response = await this.http.put<any>(`${this.apiUrl}/updateUser`, userDTO).toPromise();
+      console.log("Respuesta de la actualización del usuario:", response);
+    } catch (error) {
+      console.error("Error al actualizar el usuario:", error);
+      throw error;
+    }
+  }
+
+
+  async updateStreamData(stream: Stream) {
+    const streamDTO = {
+      streamerId: stream.streamerId,
+      title: stream.title,
+      categories: stream.categories,
+    };
+
+    try {
+      const response = await this.http.put<any>(`${this.apiUrl}/updateStream`, streamDTO).toPromise();
       console.log("Respuesta de la actualización del usuario:", response);
     } catch (error) {
       console.error("Error al actualizar el usuario:", error);

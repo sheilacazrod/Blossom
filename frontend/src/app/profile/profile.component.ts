@@ -5,11 +5,11 @@ import {TogglestreambuttonComponent} from "../togglestreambutton/togglestreambut
 import {User} from "../model/user";
 import {ApiService} from "../services/ApiService";
 import {FirebaseAuthService} from "../services/firebase-auth.service";
-
+import {Stream} from "../model/stream";
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule, TogglestreambuttonComponent], // Asegúrate de importar CommonModule y FormsModule aquí
+  imports: [CommonModule, FormsModule, TogglestreambuttonComponent],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
@@ -17,11 +17,12 @@ import {FirebaseAuthService} from "../services/firebase-auth.service";
 export class ProfileComponent implements OnInit {
   selected_categories: Set<string> = new Set();
   tabSeleccionado: string = 'perfil';
-  isVisible: boolean = false; // Controla la visibilidad de la clave de transmisión
+  isVisible: boolean = false;
   isEditingNombre: boolean = false;
 
 
   user: User | null = null;
+  stream: Stream | null = null;
   private profilePicture?: File;
   urlImagenPerfil: string = 'ruta-a-tu-imagen.jpg';
 
@@ -36,6 +37,11 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.authService.user$.subscribe(user => {
       this.getUserData();
+      this.apiService.getStreamData().then(data => {
+        [this.stream] = data;
+      }).catch(error => {
+        console.error("Error al obtener los datos del stream:", error);
+      });
     });
   }
 
@@ -63,11 +69,21 @@ export class ProfileComponent implements OnInit {
   }
 
   addCategory(Category: string) {
+    if(this.stream){
+      this.stream.categories.push(Category)
+      this.apiService.updateStreamData(this.stream)
+    }
     this.selected_categories.add(Category);
   }
 
   eraseCategory(Category: string) {
     this.selected_categories.delete(Category);
+    if(this.stream){
+      const index = this.stream?.categories.indexOf(Category);
+      if (index) {
+        this.stream?.categories.splice(index, 1);
+      }
+    }
   }
 
   uploadProfilePicture(event: any) {

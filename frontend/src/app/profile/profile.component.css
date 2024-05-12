@@ -130,12 +130,9 @@ input[type="text"], input[type="password"] {
 .stream_title {
   display: flex;
   flex-direction: row;
+  padding-bottom: 1%;
 }
 
-.stream_subtitle {
-  display: flex;
-  flex-direction: row;
-}
 
 .selected_category{
   background-color: rgba(200, 200, 200, 0.5);
