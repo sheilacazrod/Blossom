@@ -37,6 +37,11 @@ export class ApiService {
     return this.http.get<any>(`${this.apiUrl}/getStreamById?id=${user?.uid}`).toPromise();
   }
 
+  async getStreamDatabyid(id: string): Promise<any> {
+    return this.http.get<any>(`${this.apiUrl}/getStreamById?id=${id}`).toPromise();
+  }
+
+
   async getUserByName(name: string): Promise<any> {
     return this.http.get<any>(`${this.apiUrl}/getUserByUsername?username=${name}`).toPromise();
   }

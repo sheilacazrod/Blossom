@@ -9,6 +9,7 @@ import {ApiService} from "../services/ApiService";
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import {Observable} from "rxjs";
 import {FirebaseAuthService} from "../services/firebase-auth.service";
+import {Stream} from "../model/stream";
 
 @Component({
   selector: 'app-streaming-page',
@@ -27,6 +28,7 @@ export class StreamingPageComponent{
   user: User | null = null;
   isfollowing: boolean = false;
   follows: User[] = [];
+  stream: Stream | null = null;
 
   authService = inject(FirebaseAuthService)
 
@@ -43,6 +45,15 @@ export class StreamingPageComponent{
     });
   }
 
+
+  async getStreamData(id: string):Promise<void>{
+      try {
+        this.stream = await this.apiService.getStreamDatabyid(id);
+        console.log(this.stream)
+      } catch (error) {
+        console.error("Error al obtener los datos del stream:", error);
+      }
+  }
   getVideoUrl(){
     if(this.user){
       return this.sanitizer.bypassSecurityTrustResourceUrl(this.user.streamUrl.replace(/rtmp/g, 'http'));
@@ -55,6 +66,9 @@ export class StreamingPageComponent{
   async getUserData(name: string): Promise<void> {
     try {
       this.user = await this.apiService.getUserByName(name);
+      if(this.user){
+        this.getStreamData(this.user.userId);
+      }
     } catch (error) {
       console.error('Error al obtener datos de usuario:', error);
     }
