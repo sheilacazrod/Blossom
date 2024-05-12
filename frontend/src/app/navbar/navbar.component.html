@@ -12,8 +12,22 @@
   </div>
   @if (loggedNavbarView && user){
     <div class="profile">
-      <img class="profile-picture" src="{{user.pictureURL}}" alt="profile picture" (click)="toggleDropdown()">
+      <img class="profile-picture" src="{{user.pictureURL}}" alt="profile picture" [matMenuTriggerFor]="menu">
     </div>
+    <mat-menu #menu="matMenu">
+      <div class="dropdown-content">
+        <div class="profile-section">
+          <img src="{{user.pictureURL}}" alt="profile picture" class="dropdown-profile-picture">
+          <p class="profile-name">{{user.username}}</p>
+        </div>
+        <hr class="dropdown-divider">
+        <a href="/user/{{user.username}}"><i class="fa-solid fa-house icon-spacing"></i>Canal</a>
+        <a href="/profile" ><i class="fa fa-cog icon-spacing"></i>Configuración</a>
+        <a href="#" ><i class="fa-solid fa-microphone-lines icon-spacing"></i>Stremear</a>
+        <a href="/following" ><i class="fa-solid fa-star icon-spacing"></i>Suscriptores</a>
+        <a (click)="onLogout()" ><i class="fa-solid fa-door-closed icon-spacing"></i>Cerrar Sesión</a>
+      </div>
+    </mat-menu>
 
   } @else {
     <div>
@@ -21,20 +35,6 @@
     </div>
     <div>
       <button class="genericButton" (click)="openDialog(1)">Registrarse</button>
-    </div>
-  }
-  @if(user){
-    <div class="dropdown-content" [class.show-dropdown]="showDropdown">
-      <div class="profile-section">
-        <img src="{{user.pictureURL}}" alt="profile picture" class="dropdown-profile-picture">
-        <p class="profile-name">{{user.username}}</p>
-      </div>
-      <hr class="dropdown-divider">
-      <a href="/user/{{user.username}}"><i class="fa-solid fa-house icon-spacing"></i>Canal</a>
-      <a href="/profile" ><i class="fa fa-cog icon-spacing"></i>Configuración</a>
-      <a href="#" ><i class="fa-solid fa-microphone-lines icon-spacing"></i>Stremear</a>
-      <a href="/following" ><i class="fa-solid fa-star icon-spacing"></i>Suscriptores</a>
-      <a (click)="onLogout()" ><i class="fa-solid fa-door-closed icon-spacing"></i>Cerrar Sesión</a>
     </div>
   }
 </div>

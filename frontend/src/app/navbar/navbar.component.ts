@@ -6,6 +6,7 @@ import {Router, RouterLink} from "@angular/router";
 import {FirebaseAuthService} from "../services/firebase-auth.service";
 import {ApiService} from "../services/ApiService";
 import {User} from "../model/user";
+import {MatMenu, MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,9 @@ import {User} from "../model/user";
   imports: [
     SignUpComponent,
     LoginComponent,
-    RouterLink
+    RouterLink,
+    MatMenu,
+    MatMenuTrigger
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
@@ -52,18 +55,11 @@ export class NavbarComponent {
     }
   }
 
-  showDropdown= false;
-
-  toggleDropdown(){
-    this.showDropdown=!this.showDropdown;
-  }
-
   onLogout() {
     this.authService.logout();
     console.log(this.router.url)
     if(this.router.url != 'home') {
       this.router.navigate(['/home'])
-      this.showDropdown=false;
     }
   }
 }
