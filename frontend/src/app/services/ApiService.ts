@@ -81,17 +81,17 @@ export class ApiService {
 
 
   async updateStreamData(stream: Stream) {
-    const streamDTO = {
+    const Stream = {
       streamerId: stream.streamerId,
       title: stream.title,
       categories: stream.categories,
     };
-
+    console.log(Stream)
     try {
-      const response = await this.http.put<any>(`${this.apiUrl}/updateStream`, streamDTO).toPromise();
-      console.log("Respuesta de la actualización del usuario:", response);
+      const response = await this.http.put<any>(`${this.apiUrl}/updateStream`, Stream).toPromise();
+      console.log("Respuesta de la actualización el stream:", response);
     } catch (error) {
-      console.error("Error al actualizar el usuario:", error);
+      console.error("Error al actualizar el stream:", error);
       throw error;
     }
   }

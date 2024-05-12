@@ -6,16 +6,16 @@ import {User} from "../model/user";
 import {ApiService} from "../services/ApiService";
 import {FirebaseAuthService} from "../services/firebase-auth.service";
 import {Stream} from "../model/stream";
+import {StreamPreviewComponent} from "../streamPreview/stream-preview.component";
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule, TogglestreambuttonComponent],
+  imports: [CommonModule, FormsModule, TogglestreambuttonComponent, StreamPreviewComponent],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 
 export class ProfileComponent implements OnInit {
-  selected_categories: Set<string> = new Set();
   tabSeleccionado: string = 'perfil';
   isVisible: boolean = false;
   isEditingNombre: boolean = false;
@@ -37,11 +37,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.authService.user$.subscribe(user => {
       this.getUserData();
-      this.apiService.getStreamData().then(data => {
-        [this.stream] = data;
-      }).catch(error => {
-        console.error("Error al obtener los datos del stream:", error);
-      });
+      this.getStreamData();
     });
   }
 
@@ -49,6 +45,15 @@ export class ProfileComponent implements OnInit {
     window.location.reload()
   }
 
+
+  async getStreamData():Promise<void>{
+    try {
+      this.stream = await this.apiService.getStreamData();
+      console.log(this.stream)
+    } catch (error) {
+      console.error("Error al obtener los datos del stream:", error);
+    }
+  }
   async getUserData(): Promise<void> {
     try {
       this.user = await this.apiService.getUserData();
@@ -69,20 +74,18 @@ export class ProfileComponent implements OnInit {
   }
 
   addCategory(Category: string) {
-    if(this.stream){
+    const index = this.stream?.categories.indexOf(Category);
+    if(this.stream && index == -1){
       this.stream.categories.push(Category)
-      this.apiService.updateStreamData(this.stream)
+      console.log(this.stream)
     }
-    this.selected_categories.add(Category);
   }
 
   eraseCategory(Category: string) {
-    this.selected_categories.delete(Category);
     if(this.stream){
       const index = this.stream?.categories.indexOf(Category);
-      if (index) {
-        this.stream?.categories.splice(index, 1);
-      }
+      this.stream?.categories.splice(index, 1);
+      console.log(this.stream)
     }
   }
 
@@ -127,5 +130,11 @@ export class ProfileComponent implements OnInit {
       }
     }
   }
+
+  async submitStreamData(){
+    if(this.stream) {
+      await this.apiService.updateStreamData(this.stream);
+    }
+    }
 }
 

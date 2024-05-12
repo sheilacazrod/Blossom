@@ -1,4 +1,4 @@
-@if(user){
+@if(user && stream){
   <div class="configuracion">
     <ul class="nav">
       <li (click)="seleccionar('perfil')" [ngClass]="{'activo': tabSeleccionado === 'perfil'}">Perfil</li>
@@ -49,7 +49,7 @@
         <p>No compartas la clave con nadie</p>
         <br>
         <div class="stream_title">
-          Título del stream: <textarea class="stream_textarea" rows="1" placeholder="Título del stream"></textarea>
+          Título del stream: <textarea class="stream_textarea" rows="1" placeholder="Título del stream" [(ngModel)]="stream.title" ></textarea>
         </div>
         <div class="stream_category">
           Categorías del streaming:
@@ -64,15 +64,17 @@
         <div class="selected_category">
           <ul class="list_cat">
             <li>Categorías seleccionadas:</li>
-            <li class="mt-2 mb-1" *ngFor="let item of selected_categories">
+            <li class="mt-2 mb-1" *ngFor="let item of this.stream.categories">
               <button class="btn btn-danger " id="delete"
-                      (click)="eraseCategory(item)"> <img src="Images/close.png" class="close_btn"> <span  *ngIf="selected_categories" class="item">{{item}}</span></button>
-
+                      (click)="eraseCategory(item)"> <img src="Images/close.png" class="close_btn"> <span  *ngIf="this.stream.categories" class="item">{{item}}</span></button>
             </li>
           </ul>
         </div>
         <br>
-        <app-togglestreambutton></app-togglestreambutton>
+        <div style="display: flex">
+          <button (click)="submitStreamData()" style="margin-right: 2%">Guardar cambios</button>
+          <app-togglestreambutton></app-togglestreambutton>
+        </div>
       </div>
     </div>
   </div>
