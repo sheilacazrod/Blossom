@@ -47,7 +47,6 @@ public class UserController {
 
     @PutMapping("/addFollowed")
     public List<User> addFollowed(@RequestParam String userId, @RequestParam String followedId) throws ExecutionException, InterruptedException {
-        System.out.println("userId= " + userId + "\nfollowedId= " + followedId);
         return  userService.addFollowed(userId, followedId);
     }
 

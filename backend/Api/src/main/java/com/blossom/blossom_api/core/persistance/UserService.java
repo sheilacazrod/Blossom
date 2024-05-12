@@ -22,7 +22,8 @@ public class UserService {
     public User createUser(User user) {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         dbFirestore.collection("users").document(user.getUserId()).set(user);
-        Stream stream = new Stream(user.getUserId(), "Mi Stream", new String[]{});
+        List<String> categories = new ArrayList<>();
+        Stream stream = new Stream(user.getUserId(), "Mi Stream",categories);
         dbFirestore.collection("streams").document(user.getUserId()).set(stream);
         return user;
     }

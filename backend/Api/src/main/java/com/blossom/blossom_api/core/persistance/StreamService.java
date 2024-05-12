@@ -22,6 +22,19 @@ public class StreamService {
         return streamList;
     }
 
+    public Stream getStreamById(String id) throws ExecutionException, InterruptedException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        DocumentReference docRef = dbFirestore.collection("streams").document(id);
+        ApiFuture<DocumentSnapshot> future = docRef.get();
+        DocumentSnapshot documentSnapshot = future.get();
+        Stream stream;
+        if (documentSnapshot.exists()) {
+            stream = documentSnapshot.toObject(Stream.class);
+            return stream;
+        }
+        return null;
+    }
+
     public List<Stream> getStreamsByCategory(String category) throws ExecutionException, InterruptedException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         Query query = dbFirestore.collection("streams").whereArrayContains("categories", category);
@@ -44,7 +57,7 @@ public class StreamService {
         DocumentReference streamRef = dbFirestore.collection("streams").document(stream.getStreamerId());
         Map<String, Object> updates = new HashMap<>();
         updates.put("title", stream.getTitle());
-        updates.put("categories", Arrays.asList(stream.getCategories()));
+        updates.put("categories", stream.getCategories()); // Pasar la lista directamente
         ApiFuture<WriteResult> writeResult = streamRef.update(updates);
         writeResult.get();
         return stream;

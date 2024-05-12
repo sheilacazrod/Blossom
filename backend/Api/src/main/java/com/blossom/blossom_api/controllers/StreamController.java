@@ -18,6 +18,12 @@ public class StreamController {
     public List<Stream> getAllStreams() throws ExecutionException, InterruptedException {
         return streamService.getAllStreams();
     }
+
+    @GetMapping("/getStreamById")
+    public Stream getStreamById(@RequestParam String id) throws ExecutionException, InterruptedException {
+        return streamService.getStreamById(id);
+    }
+
     @GetMapping("/getStreamsByCategory")
     public List<Stream> getStreamsByCategory(@RequestParam String category) throws ExecutionException, InterruptedException {
         return streamService.getStreamsByCategory(category);
