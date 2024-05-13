@@ -11,9 +11,10 @@ import java.util.concurrent.ExecutionException;
 
 @Service
 public class StreamService {
+    public UserService userService;
+    public Firestore dbFirestore = FirestoreClient.getFirestore();
 
     public List<Stream> getAllStreams() throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<QuerySnapshot> future = dbFirestore.collection("streams").get();
         List<Stream> streamList = new ArrayList<>();
         for (QueryDocumentSnapshot document : future.get().getDocuments()) {
@@ -23,7 +24,6 @@ public class StreamService {
     }
 
     public Stream getStreamById(String id) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference docRef = dbFirestore.collection("streams").document(id);
         ApiFuture<DocumentSnapshot> future = docRef.get();
         DocumentSnapshot documentSnapshot = future.get();
@@ -35,25 +35,23 @@ public class StreamService {
         return null;
     }
 
-    public List<Stream> getStreamsByCategory(String category) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
+    public List<User> getStreamsByCategory(String category) throws ExecutionException, InterruptedException {
         Query query = dbFirestore.collection("streams").whereArrayContains("categories", category);
 
         ApiFuture<QuerySnapshot> querySnapshot = query.get();
 
         List<QueryDocumentSnapshot> documents = querySnapshot.get().getDocuments();
 
-        List<Stream> streamList = new ArrayList<>();
-
+        List<User> userList = new ArrayList<>();
         for (QueryDocumentSnapshot document : documents) {
-            streamList.add(document.toObject(Stream.class));
+            String id= document.toObject(Stream.class).getStreamerId();
+            userList.add(userService.getUserById(id));
         }
 
-        return streamList;
+        return userList;
     }
 
     public Stream updateStream(Stream stream) throws InterruptedException, ExecutionException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference streamRef = dbFirestore.collection("streams").document(stream.getStreamerId());
         Map<String, Object> updates = new HashMap<>();
         updates.put("title", stream.getTitle());
