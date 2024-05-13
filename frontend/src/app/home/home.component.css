@@ -27,13 +27,3 @@ body{
   gap: 5px;
 }
 
-.video {
-  cursor:pointer;
-  width: calc(25% - 5%);
-  margin: 10px;
-}
-
-.video img {
-  width: 100%;
-}
-

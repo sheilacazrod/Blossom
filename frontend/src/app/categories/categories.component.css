@@ -1,5 +1,7 @@
+
 main{
-  padding: 2%;
+  width: 85vw;
+  padding: 3%;
 }
 #categories {
   list-style-type: none;
@@ -43,31 +45,16 @@ main{
   background-color: #B98DA8;
 }
 
-.additional-videos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 2%;
-}
-
-.video {
-  cursor: pointer;
-  width: calc(25% - 5%);
-  margin: 10px;
-
-}
-
-.video img {
-  width: 100%;
-}
-
 .content{
   display: flex;
 }
 
-img {
-  width: 250px;
-  height: 130px;
+.additional-videos {
+  padding: 3%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  flex: 1;
 }
 
 /*.streams_1 {*/

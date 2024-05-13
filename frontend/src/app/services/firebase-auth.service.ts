@@ -43,7 +43,7 @@ export class FirebaseAuthService {
       .then(async response => {
         console.log("Response register: ", response);
         try {
-          const profilePic: string = 'https://png.pngtree.com/background/20230525/original/pngtree-an-egg-with-a-sad-face-sitting-on-a-dark-background-picture-image_2726098.jpg'
+          const profilePic: string = 'https://i.pinimg.com/564x/d1/30/63/d13063be4ec864b9a114732661161d9e.jpg'
           const auth = getAuth();
           const user = auth.currentUser;
           if(user){

@@ -13,6 +13,11 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+
+  async getStreamsByCategory(category: string){
+    return this.http.get<any>(`${this.apiUrl}/getStreamsByCategory?category=${category}`) as Observable<User[]>;
+  }
+
   createUser(username: string, profilePictureURL:string, uid: string): Observable<any> {
     const userDTO = {
       userId: uid,
