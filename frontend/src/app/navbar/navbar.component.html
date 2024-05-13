@@ -25,7 +25,7 @@
         <a [routerLink]="['/profile', { param: 'perfil' }]" ><i class="fa fa-cog icon-spacing"></i>Configuración</a>
         <a [routerLink]="['/profile', { param: 'transmitir' }]" ><i class="fa-solid fa-microphone-lines icon-spacing"></i>Stremear</a>
         <a href="/following" ><i class="fa-solid fa-star icon-spacing"></i>Suscriptores</a>
-        <a (click)="onLogout()" ><i class="fa-solid fa-door-closed icon-spacing"></i>Cerrar Sesión</a>
+        <a (click)="onLogout()"  class="logout"><i class="fa-solid fa-door-closed icon-spacing"></i>Cerrar Sesión</a>
       </div>
     </mat-menu>
 

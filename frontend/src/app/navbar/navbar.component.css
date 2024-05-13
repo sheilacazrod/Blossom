@@ -172,3 +172,7 @@ input {
   background-color: #333333; /* Elige el color que prefieras para la línea */
   margin: 10px 0; /* Ajusta el espacio vertical antes y después de la línea */
 }
+
+.logout{
+  cursor: pointer;
+}
