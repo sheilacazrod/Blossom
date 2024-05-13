@@ -100,3 +100,10 @@ iframe {
   transform: scale(0.9); /* Reduce el tamaño del botón al hacer clic */
 }
 
+
+.biography{
+  background-color: #f0e1d2;
+  padding: 2%;
+  margin-top: 2%;
+  border-radius: 5px;
+}

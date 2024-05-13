@@ -22,8 +22,8 @@
         </div>
         <hr class="dropdown-divider">
         <a href="/user/{{user.username}}"><i class="fa-solid fa-house icon-spacing"></i>Canal</a>
-        <a href="/profile" ><i class="fa fa-cog icon-spacing"></i>Configuración</a>
-        <a href="#" ><i class="fa-solid fa-microphone-lines icon-spacing"></i>Stremear</a>
+        <a [routerLink]="['/profile', { param: 'perfil' }]" ><i class="fa fa-cog icon-spacing"></i>Configuración</a>
+        <a [routerLink]="['/profile', { param: 'transmitir' }]" ><i class="fa-solid fa-microphone-lines icon-spacing"></i>Stremear</a>
         <a href="/following" ><i class="fa-solid fa-star icon-spacing"></i>Suscriptores</a>
         <a (click)="onLogout()" ><i class="fa-solid fa-door-closed icon-spacing"></i>Cerrar Sesión</a>
       </div>

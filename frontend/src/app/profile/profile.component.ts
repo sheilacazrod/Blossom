@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {TogglestreambuttonComponent} from "../togglestreambutton/togglestreambutton.component";
@@ -7,6 +7,7 @@ import {ApiService} from "../services/ApiService";
 import {FirebaseAuthService} from "../services/firebase-auth.service";
 import {Stream} from "../model/stream";
 import {StreamPreviewComponent} from "../streamPreview/stream-preview.component";
+import {ActivatedRoute} from "@angular/router";
 @Component({
   selector: 'app-profile',
   standalone: true,
@@ -19,7 +20,7 @@ export class ProfileComponent implements OnInit {
   tabSeleccionado: string = 'perfil';
   isVisible: boolean = false;
   isEditingNombre: boolean = false;
-
+  profilemessage: string= '';
 
   user: User | null = null;
   stream: Stream | null = null;
@@ -31,7 +32,8 @@ export class ProfileComponent implements OnInit {
   }
 
   constructor(private apiService: ApiService,
-              private authService: FirebaseAuthService,) {
+              private authService: FirebaseAuthService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -39,10 +41,9 @@ export class ProfileComponent implements OnInit {
       this.getUserData();
       this.getStreamData();
     });
-  }
-
-  reloadPage() {
-    window.location.reload()
+    this.route.params.subscribe(params => {
+      this.tabSeleccionado = params['param'];
+    });
   }
 
 
@@ -117,14 +118,14 @@ export class ProfileComponent implements OnInit {
             } else {
               console.log("Ha habido un error al cargar la imagen.");
             }
-            this.reloadPage()
+            this.getUserData();
           }
         );
       }
       else{
         this.apiService.updateUserData(this.user).then(
           () => {
-            this.reloadPage()
+            this.getUserData();
           }
         );
       }
