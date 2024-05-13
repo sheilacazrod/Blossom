@@ -19,8 +19,8 @@ import java.util.concurrent.ExecutionException;
 
 @Service
 public class UserService {
+    public Firestore dbFirestore = FirestoreClient.getFirestore();
     public User createUser(User user) {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         dbFirestore.collection("users").document(user.getUserId()).set(user);
         List<String> categories = new ArrayList<>();
         Stream stream = new Stream(user.getUserId(), "Mi Stream",categories);
@@ -29,7 +29,6 @@ public class UserService {
     }
 
     public User getUserById(String id) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference docRef = dbFirestore.collection("users").document(id);
         ApiFuture<DocumentSnapshot> future = docRef.get();
         DocumentSnapshot documentSnapshot = future.get();
@@ -42,7 +41,6 @@ public class UserService {
     }
 
     public User getUserByUsername(String username) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         Query query = dbFirestore.collection("users").whereEqualTo("username", username).limit(1);
         ApiFuture<QuerySnapshot> querySnapshot = query.get();
         List<QueryDocumentSnapshot> documents = querySnapshot.get().getDocuments();
@@ -55,7 +53,6 @@ public class UserService {
     }
 
     public User updateUser(UserDTO user) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference docRef = dbFirestore.collection("users").document(user.getUserId());
         ApiFuture<DocumentSnapshot> future = docRef.get();
         DocumentSnapshot document = future.get();
@@ -75,13 +72,11 @@ public class UserService {
     }
 
     public String deleteUser(String id) {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         dbFirestore.collection("users").document(id).delete();
         return "Successfully deleted " + id;
     }
 
     public List<User> getAllUsers() throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<QuerySnapshot> future = dbFirestore.collection("users").get();
         List<User> userList = new ArrayList<>();
         for (QueryDocumentSnapshot document : future.get().getDocuments()) {
@@ -91,7 +86,6 @@ public class UserService {
     }
 
     public List<User> getFollowed(String userId) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference docRef = dbFirestore.collection("users").document(userId);
         ApiFuture<DocumentSnapshot> future = docRef.get();
         DocumentSnapshot document = future.get();
@@ -109,7 +103,6 @@ public class UserService {
     }
 
     public List<User> addFollowed(String userId, String followedId) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference docRef = dbFirestore.collection("users").document(userId);
         ApiFuture<DocumentSnapshot> future = docRef.get();
         DocumentSnapshot document = future.get();
@@ -130,7 +123,6 @@ public class UserService {
     }
 
     public List<User> deleteFollowed(String userId, String followedId) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference docRef = dbFirestore.collection("users").document(userId);
         ApiFuture<DocumentSnapshot> future = docRef.get();
         DocumentSnapshot document = future.get();

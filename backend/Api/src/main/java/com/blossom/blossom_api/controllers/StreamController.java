@@ -1,6 +1,5 @@
 package com.blossom.blossom_api.controllers;
 import com.blossom.blossom_api.core.persistance.StreamService;
-import com.blossom.blossom_api.model.dto.UserDTO;
 import com.blossom.blossom_api.model.entity.Stream;
 import com.blossom.blossom_api.model.entity.User;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +24,7 @@ public class StreamController {
     }
 
     @GetMapping("/getStreamsByCategory")
-    public List<Stream> getStreamsByCategory(@RequestParam String category) throws ExecutionException, InterruptedException {
+    public List<User> getStreamsByCategory(@RequestParam String category) throws ExecutionException, InterruptedException {
         return streamService.getStreamsByCategory(category);
     }
 
