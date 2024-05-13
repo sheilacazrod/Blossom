@@ -3,6 +3,11 @@
   src: url("/Fonts/LibreBaskerville-Bold.ttf");
 }
 
+.error-message{
+  color: red;
+  margin: 1%;
+}
+
 .popup-content {
   font-family: 'Libre Baskerville';
   width: 35vw;

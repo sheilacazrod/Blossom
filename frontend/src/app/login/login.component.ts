@@ -13,6 +13,8 @@ import {MatDialogRef} from "@angular/material/dialog";
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
+  errorMessage: string | null = null;
   constructor(private fb: FormBuilder,
               private authService: FirebaseAuthService,
               private dialogRef: MatDialogRef<LoginComponent>) {
@@ -26,11 +28,12 @@ export class LoginComponent {
     const rawForm = this.loginForm.getRawValue();
     this.authService.login(rawForm.loginMail, rawForm.loginPwd)
       .subscribe({
-        next: () =>{
-          window.location.reload()
+        next: () => {
+          window.location.reload();
         },
         error: (error) => {
           console.log(error.code);
+          this.errorMessage = 'El correo electrónico o la contraseña son incorrectos.';
         }
       });
   }

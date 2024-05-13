@@ -4,6 +4,15 @@
   padding-left: 2vw;
 }
 
+.profile-message{
+  margin-left: 2%;
+}
+
+.container-buttons {
+  display: flex;
+  align-items: center;
+}
+
 .nav {
   list-style: none;
   padding: 20px 0;

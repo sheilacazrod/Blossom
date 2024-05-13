@@ -20,7 +20,8 @@ export class ProfileComponent implements OnInit {
   tabSeleccionado: string = 'perfil';
   isVisible: boolean = false;
   isEditingNombre: boolean = false;
-  profilemessage: string= '';
+  profilemessage: string | null = null;
+  streammessage: string | null = null;
 
   user: User | null = null;
   stream: Stream | null = null;
@@ -115,6 +116,7 @@ export class ProfileComponent implements OnInit {
           (response) => {
             if(response) {
               console.log("La imagen se ha cargado.");
+              this.profilemessage="Cambios realizados con éxito";
             } else {
               console.log("Ha habido un error al cargar la imagen.");
             }
@@ -125,6 +127,7 @@ export class ProfileComponent implements OnInit {
       else{
         this.apiService.updateUserData(this.user).then(
           () => {
+            this.profilemessage="Cambios realizados con éxito";
             this.getUserData();
           }
         );
@@ -135,6 +138,7 @@ export class ProfileComponent implements OnInit {
   async submitStreamData(){
     if(this.stream) {
       await this.apiService.updateStreamData(this.stream);
+      this.streammessage="Cambios realizados con éxito";
     }
     }
 }

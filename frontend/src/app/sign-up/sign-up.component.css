@@ -4,6 +4,11 @@
   src: url("/Fonts/LibreBaskerville-Bold.ttf");
 }
 
+.error-message{
+  color: red;
+  margin: 1%;
+}
+
 body {
   color: #42033D;
 }

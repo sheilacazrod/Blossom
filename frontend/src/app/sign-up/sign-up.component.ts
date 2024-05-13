@@ -13,6 +13,7 @@ import {MatDialogRef} from "@angular/material/dialog";
   styleUrl: './sign-up.component.css'
 })
 export class SignUpComponent {
+  errorMessage: string | null = null;
   constructor(private fb: FormBuilder,
               private authService: FirebaseAuthService,
               private dialogRef: MatDialogRef<SignUpComponent>) {
@@ -26,15 +27,25 @@ export class SignUpComponent {
     email: ['', [Validators.required, Validators.email, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]]
   })
   submit() {
+    if (this.registerForm.invalid) {
+      this.errorMessage = 'Por favor, completa todos los campos correctamente.';
+      return;
+    }
+
     const rawForm = this.registerForm.getRawValue();
     this.authService.register(rawForm.email, rawForm.username, rawForm.password)
       .subscribe({
-        next: () =>{
+        next: () => {
           console.log("Usuario Registrado");
-          window.location.reload()
+          window.location.reload();
         },
         error: (error) => {
           console.log(error.code);
+          if (error.code === 'auth/email-already-in-use') {
+            this.errorMessage = 'El correo electrónico ya está en uso.';
+          } else {
+            this.errorMessage = 'Se produjo un error al registrar el usuario. Por favor, inténtalo de nuevo más tarde.';
+          }
         }
       });
   }

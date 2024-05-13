@@ -28,7 +28,12 @@
         <label for="biografia">Biografía:</label>
         <textarea id="biografia" [(ngModel)]="user.biography"></textarea>
 
-        <button (click)="submitUserData()">Guardar cambios</button>
+        <div class="container-buttons">
+          <button (click)="submitUserData()">Guardar cambios</button>
+          @if(profilemessage){
+            <div class="profile-message">{{ profilemessage }}</div>
+          }
+        </div>
       </div>
     </div>
 
@@ -71,9 +76,12 @@
           </ul>
         </div>
         <br>
-        <div style="display: flex">
+        <div class="container-buttons">
           <button (click)="submitStreamData()" style="margin-right: 2%">Guardar cambios</button>
           <app-togglestreambutton></app-togglestreambutton>
+          @if(streammessage){
+            <div class="profile-message">{{ streammessage }}</div>
+          }
         </div>
       </div>
     </div>
