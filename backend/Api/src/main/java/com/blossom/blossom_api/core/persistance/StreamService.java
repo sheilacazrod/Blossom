@@ -14,6 +14,7 @@ public class StreamService {
     public UserService userService;
     public Firestore dbFirestore = FirestoreClient.getFirestore();
 
+    public StreamService(UserService userService) {this.userService = userService;}
     public List<Stream> getAllStreams() throws ExecutionException, InterruptedException {
         ApiFuture<QuerySnapshot> future = dbFirestore.collection("streams").get();
         List<Stream> streamList = new ArrayList<>();
@@ -47,7 +48,6 @@ public class StreamService {
             String id= document.toObject(Stream.class).getStreamerId();
             userList.add(userService.getUserById(id));
         }
-
         return userList;
     }
 
